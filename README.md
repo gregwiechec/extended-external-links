@@ -1,1 +1,1 @@
-# extended-external-links
+# extended-external-links-property
