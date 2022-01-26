@@ -47,3 +47,4 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
 };
 
 export default DetailedItemsList;
+//TODO: LINKS add resources

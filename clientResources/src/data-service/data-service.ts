@@ -5,3 +5,5 @@ export const dataService: DataService = {
     loadAggregatedItems: () => [],
     export: () => {}
 };
+
+//TODO: LINKS Implement server method
