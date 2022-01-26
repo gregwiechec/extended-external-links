@@ -10,7 +10,7 @@ export type AggregatedDataItem = {
 };
 
 export type DataService = {
-    loadItems: () => DataItem[];
-    loadAggregatedItems: () => AggregatedDataItem[];
+    loadItems: () => Promise<DataItem[]>;
+    loadAggregatedItems: () => Promise<AggregatedDataItem[]>;
     export: () => void;
 };

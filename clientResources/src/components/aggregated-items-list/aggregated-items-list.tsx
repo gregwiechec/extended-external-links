@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Table } from "optimizely-oui";
+import { EmptyDashboard, Link, Table } from "optimizely-oui";
 import { AggregatedDataItem } from "../../definitions";
 
 interface ItemsListProps {
@@ -9,6 +9,13 @@ interface ItemsListProps {
 const AggregatedItemsList = ({ items }: ItemsListProps) => {
     if (!items) {
         items = [];
+    }
+    if (items.length === 0) {
+        // @ts-ignore
+        return <EmptyDashboard
+            headline="No data"
+            description={<div>Looks like there are no external links on your site</div>}
+        />;
     }
 
     return (
