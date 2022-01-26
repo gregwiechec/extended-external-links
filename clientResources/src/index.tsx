@@ -4,6 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import axios from "axios";
 import ServerSettingsContext, {ServerSettings} from "./server-settings";
 import "./index.css";
+import "optimizely-oui/dist/styles.css";
 import App from "./components/app/App";
 
 const rootElement = document.getElementById("root");

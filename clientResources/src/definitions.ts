@@ -1,10 +1,10 @@
-type DataItem = {
+export type DataItem = {
     externalLink: string;
     contentName: string;
     contentUrl: string;
 };
 
-type AggregatedDataItem = {
+export type AggregatedDataItem = {
     externalLink: string;
     count: number;
 };
