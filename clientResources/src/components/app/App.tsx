@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 // @ts-ignore
-import { Attention, Button, Checkbox, Code, Grid, GridCell, GridContainer } from "optimizely-oui";
-import "./App.scss";
+import { Button, Checkbox, Grid, GridCell, GridContainer } from "optimizely-oui";
 import { dataService as defaultDataService } from "../../data-service/data-service";
 import { AggregatedDataItem, DataItem, DataService } from "../../definitions";
 import { useServerSettingsContext } from "../../server-settings";
 import AggregatedItemsList from "../aggregated-items-list/aggregated-items-list";
 import DetailedItemsList from "../detailed-items-list/detailed-items-list";
+import "./App.scss";
 
 interface AppProps {
     dataService?: DataService;
