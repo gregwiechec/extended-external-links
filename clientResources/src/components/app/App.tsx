@@ -13,7 +13,7 @@ interface AppProps {
 }
 
 const App = ({ dataService }: AppProps) => {
-    if (!dataService)  {
+    if (!dataService) {
         dataService = defaultDataService;
     }
 
@@ -23,7 +23,16 @@ const App = ({ dataService }: AppProps) => {
     const [aggregatedItems, setAggregatedItems] = useState<AggregatedDataItem[]>([]);
 
     const onExport = () => {
-        alert(1);
+        dataService?.loadItems().then(result => {
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + (result || []).map(x => x.contentName + "," + x.contentUrl + "," + x.externalLink).join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "export.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".
+        });
     };
 
     useEffect(() => {
@@ -32,7 +41,7 @@ const App = ({ dataService }: AppProps) => {
         } else {
             dataService?.loadAggregatedItems().then(result => setAggregatedItems(result));
         }
-    }, [showDetails])
+    }, [showDetails]);
 
     return (
         <GridContainer>
@@ -42,17 +51,16 @@ const App = ({ dataService }: AppProps) => {
                               onChange={x => setShowDetails(x.target.checked)} />
                 </GridCell>
                 <GridCell large={12} medium={8} small={4}>
-                    {showDetails ? <DetailedItemsList items={detailedItems} /> : <AggregatedItemsList items={aggregatedItems} />}
+                    {showDetails ? <DetailedItemsList items={detailedItems} /> :
+                        <AggregatedItemsList items={aggregatedItems} />}
                 </GridCell>
                 <GridCell large={12} medium={8} small={4}>
                     <Button
-                        className="add-configuration-button"
-                        style="highlight"
                         size="narrow"
-                        leftIcon="add"
+                        leftIcon="file"
                         onClick={onExport}
                     >
-                        Add configuration
+                        Export
                     </Button>
                 </GridCell>
             </Grid>
@@ -61,5 +69,3 @@ const App = ({ dataService }: AppProps) => {
 };
 
 export default App;
-
-//TODO: LINKS implement export
