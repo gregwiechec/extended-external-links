@@ -10,7 +10,7 @@ define([
     "dojo/text!./templates/external-links-component.html",
 
     // Widgets in template
-    "dijit/Toolbar",
+    "dijit/Toolbar"
 ], function (
     declare,
 	_LayoutWidget,

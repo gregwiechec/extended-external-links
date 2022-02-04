@@ -14,7 +14,4 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\**" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClientResources\" />
-  </ItemGroup>
 </Project>
