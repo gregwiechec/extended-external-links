@@ -30,6 +30,7 @@ define([
 
         _viewChanged: function (type, args, data) {
             this.set("isAvailable", type !== "extended-external-links/external-links-component");
+            //TODO: (LINKS) links is available is not set when refreshing the page
         }
     });
 });
