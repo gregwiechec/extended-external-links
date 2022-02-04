@@ -6,8 +6,8 @@ define([
     "./show-external-links-command"
 ], function (
     declare,
-    _Module,
     Button,
+    _Module,
     dependency,
     ShowExternalLinksCommand
 ) {
@@ -25,9 +25,9 @@ define([
             // add global command
             var commandRegistry = dependency.resolve("epi.globalcommandregistry");
             var provider = commandRegistry.get("epi.cms.globalToolbar");
-            this.addToLeading(new ShowExternalLinksCommand(), {
+            provider.providers[0].addToTrailing(new ShowExternalLinksCommand(), {
                 widget: Button,
-                "class": "epi-leadingToggleButton epi-mediumButton"
+                "class": "epi-mediumButton epi-chromelessButton"
             });
         }
     });
