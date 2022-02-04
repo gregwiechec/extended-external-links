@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { EmptyDashboard, Link, Table } from "optimizely-oui";
+import { Table } from "optimizely-oui";
 import { DataItem } from "../../definitions";
 import { useSortState } from "../../table-sort";
+import NoData from "../no-data/no-data";
+import ActionLink from "../action-link/action-link";
 
 interface ItemsListProps {
     items: DataItem[];
 }
 
 const DetailedItemsList = ({ items }: ItemsListProps) => {
-
     const sortState = useSortState(items);
 
     useEffect(() => {
@@ -17,10 +18,7 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
 
     if (items.length === 0) {
         // @ts-ignore
-        return <EmptyDashboard
-            headline="No data"
-            description={<div>Looks like there are no external links on your site</div>}
-        />;
+        return <NoData />;
     }
 
     return (
@@ -36,14 +34,16 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
                 </Table.TR>
             </Table.THead>
             <Table.TBody>
-                {sortState.tableData.map((x, index) => (<Table.TR key={index}>
-                    <Table.TD>
-                        <Link href={x.externalLink} newWindow style="default">{x.externalLink}</Link>
-                    </Table.TD>
-                    <Table.TD width="20%">
-                        <Link href={x.contentUrl} newWindow style="default">{x.contentName}</Link>
-                    </Table.TD>
-                </Table.TR>))}
+                {sortState.tableData.map((x, index) => (
+                    <Table.TR key={index}>
+                        <Table.TD>
+                            <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
+                        </Table.TD>
+                        <Table.TD width="20%">
+                            <ActionLink href={x.contentUrl} newWindow>{x.contentName}</ActionLink>
+                        </Table.TD>
+                    </Table.TR>
+                ))}
             </Table.TBody>
         </Table>
     );

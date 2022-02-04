@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { EmptyDashboard, Link, Table } from "optimizely-oui";
+import { Table } from "optimizely-oui";
 import { AggregatedDataItem } from "../../definitions";
 import { useSortState } from "../../table-sort";
+import NoData from "../no-data/no-data";
+import ActionLink from "../action-link/action-link";
 
 interface ItemsListProps {
     items: AggregatedDataItem[];
@@ -15,11 +17,7 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
     }, [items]);
 
     if (items.length === 0) {
-        // @ts-ignore
-        return <EmptyDashboard
-            headline="No data"
-            description={<div>Looks like there are no external links on your site</div>}
-        />;
+        return <NoData />;
     }
 
     return (
@@ -35,15 +33,14 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
                 </Table.TR>
             </Table.THead>
             <Table.TBody>
-                {sortState.tableData.map(x => (<Table.TR key={x.externalLink}>
-                    <Table.TD>
-                        {/* eslint-disable-next-line react/style-prop-object */}
-                        <Link href={x.externalLink} newWindow style="default">{x.externalLink}</Link>
-                    </Table.TD>
-                    <Table.TD width="20%">
-                        {x.count}
-                    </Table.TD>
-                </Table.TR>))}
+                {sortState.tableData.map((x) => (
+                    <Table.TR key={x.externalLink}>
+                        <Table.TD>
+                            <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
+                        </Table.TD>
+                        <Table.TD width="20%">{x.count}</Table.TD>
+                    </Table.TR>
+                ))}
             </Table.TBody>
         </Table>
     );
