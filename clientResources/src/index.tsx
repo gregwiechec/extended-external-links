@@ -29,19 +29,8 @@ export default declare([WidgetBase], {
                     <App />
                 </ServerSettingsContext.Provider>
             </React.StrictMode>,
-            document.getElementById("root")
+            this.domNode
         );
-    },
-
-    /**
-     *
-     * @param propertyNameMapping dictionary with name and displayname pairs
-     */
-    updateDisplayNamesDictionary: function(propertyNameMapping: object) {
-        this.stores.reviewStore.propertyNameMapping = propertyNameMapping;
-    },
-    loadPins: function() {
-        this.stores.reviewStore.load();
     },
     destroy: function() {
         ReactDOM.unmountComponentAtNode(this.domNode);

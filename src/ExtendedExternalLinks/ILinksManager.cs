@@ -13,7 +13,8 @@ namespace ExtendedExternalLinks
 {
     public interface ILinksManager
     {
-        IndexViewData GetData(IPrincipal user, bool showDetails);
+        IEnumerable<LinkDetailsData> GetItems(IPrincipal user);
+        IEnumerable<LinkCommonData> GetAggregatedItems(IPrincipal user);
     }
 
     [ServiceConfiguration(typeof(ILinksManager))]
@@ -28,21 +29,16 @@ namespace ExtendedExternalLinks
             _softLinkRepository = softLinkRepository;
         }
 
-        public IndexViewData GetData(IPrincipal user, bool showDetails)
+        public IEnumerable<LinkDetailsData> GetItems(IPrincipal user)
         {
             var links = GetLinks(user).ToList();
-            var commonItems = showDetails ?  Enumerable.Empty<LinkCommonData>() : GetCommonList(links);
-            var detailsItems = showDetails ? GetDetailsList(links, 0, 10000) : Enumerable.Empty<LinkDetailsData>();
+            return GetContent(GetDetailsList(links), 0, 10000);
+        }
 
-            return new IndexViewData()
-            {
-                PageNumber = 0,
-                PageSize = 10000,
-                Count = showDetails ? detailsItems.Count() : commonItems.Count(),
-                ShowDetails = showDetails,
-                CommonItems = GetContent(commonItems, 0, 10000),
-                DetailsItems = GetContent(detailsItems, 0, 10000)
-            };
+        public IEnumerable<LinkCommonData> GetAggregatedItems(IPrincipal user)
+        {
+            var links = GetLinks(user).ToList();
+            return GetContent(GetCommonList(links), 0, 10000);
         }
 
         private IEnumerable<LinkCommonData> GetCommonList(IEnumerable<UrlContentReferencePair> source)
@@ -50,7 +46,7 @@ namespace ExtendedExternalLinks
             var temp = source.GroupBy(item => item.Url.Host);
             var items = temp.Select(item => new LinkCommonData
             {
-                Host = item.Key, Url = item.First().Url.Scheme + "://" + item.First().Url.Authority, Hits = item.Count()
+                Host = item.Key, ExternalLink = item.First().Url.Scheme + "://" + item.First().Url.Authority, Count = item.Count()
             });
             return items.OrderBy(item => item.Host);
         }
@@ -71,17 +67,16 @@ namespace ExtendedExternalLinks
             return new PageData {PageName = string.Empty, LinkURL = string.Empty};
         }
 
-        private IEnumerable<LinkDetailsData> GetDetailsList(IEnumerable<UrlContentReferencePair> source, int pageNumber,
-            int pageSize)
+        private IEnumerable<LinkDetailsData> GetDetailsList(IEnumerable<UrlContentReferencePair> source)
         {
             var temp = source.Select(item => new
                 {Url = item.Url.ToString(), Content = GetContent(item.ContentReference)});
             var items = temp.Select(item => new LinkDetailsData
             {
-                Url = item.Url, ContentName = item.Content.Name,
-                ContentLink = PageEditing.GetEditUrl(item.Content.ContentLink)
+                ExternalLink = item.Url, ContentName = item.Content.Name,
+                ContentUrl = PageEditing.GetEditUrl(item.Content.ContentLink)
             });
-            return items.OrderBy(item => item.Url);
+            return items.OrderBy(item => item.ExternalLink);
         }
 
         private IEnumerable<UrlContentReferencePair> GetLinks(IPrincipal user)
@@ -137,28 +132,18 @@ namespace ExtendedExternalLinks
         }
     }
 
-    public class IndexViewData
-    {
-        public int PageSize { get; internal set; }
-        public int PageNumber { get; internal set; }
-        public int Count { get; internal set; }
-        public bool ShowDetails { get; internal set; }
-        public IEnumerable<LinkCommonData> CommonItems { get; internal set; }
-        public IEnumerable<LinkDetailsData> DetailsItems { get; internal set; }
-    }
-
     public class LinkCommonData
     {
         public string Host { get; internal set; }
-        public string Url { get; internal set; }
-        public int Hits { get; internal set; }
+        public string ExternalLink { get; internal set; }
+        public int Count { get; internal set; }
     }
 
     public class LinkDetailsData
     {
-        public string Url { get; internal set; }
+        public string ExternalLink { get; internal set; }
         public string ContentName { get; internal set; }
-        public string ContentLink { get; internal set; }
+        public string ContentUrl { get; internal set; }
     }
 
     public class UrlContentReferencePair
