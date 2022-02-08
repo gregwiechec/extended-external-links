@@ -20,22 +20,20 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
     }
 
     return (
-        <table>
+        <table className="external-links-table">
             <thead>
                 <tr>
-                    <th>
-                        Web address
-                    </th>
-                    <th>
-                        Number of linking content items
-                    </th>
+                    <th>Web address</th>
+                    <th>Number of contents</th>
                 </tr>
             </thead>
             <tbody>
                 {sortState.tableData.map((x) => (
                     <tr key={x.externalLink}>
                         <td>
-                            <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
+                            <ActionLink href={x.externalLink} newWindow>
+                                {x.externalLink}
+                            </ActionLink>
                         </td>
                         <td width="20%">{x.count}</td>
                     </tr>

@@ -43,7 +43,7 @@ const App = ({ dataService }: AppProps) => {
     }, [showDetails]);
 
     return (
-        <div>
+        <div className="external-links-container">
             <hgroup className="epi-heading-group">
                 <h2 className="epi-heading">External links</h2>
             </hgroup>
@@ -61,7 +61,7 @@ const App = ({ dataService }: AppProps) => {
                 )}
             </div>
             <div>
-                <button onClick={onExport}>Export</button>
+                <button className="external-links-button" onClick={onExport}>Export</button>
             </div>
         </div>
     );

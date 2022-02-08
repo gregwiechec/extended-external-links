@@ -21,7 +21,7 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
     }
 
     return (
-        <table>
+        <table className="external-links-table">
             <thead>
                 <tr>
                     <th>

@@ -1,0 +1,25 @@
+.external-links-container {
+    padding-bottom: 50px;
+}
+
+.external-links-button {
+    background: #0037ff;
+    border-color: #0037ff;
+    color: #ffffff;
+    padding: 3px 10px;
+}
+
+.external-links-no-data {
+    padding: 20px 0;
+}
+
+.external-links-table {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 500px;
+
+    tr {
+        padding: 4px 0;
+    }
+}
