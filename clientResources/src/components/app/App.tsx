@@ -35,12 +35,19 @@ const App = ({ dataService }: AppProps) => {
     };
 
     useEffect(() => {
+        onRefresh(null);
+    }, [showDetails]);
+
+    const onRefresh = (e: any = null) => {
+        if (e) {
+            e.preventDefault();
+        }
         if (showDetails) {
             dataService?.loadItems().then((result) => setDetailedItems(result));
         } else {
             dataService?.loadAggregatedItems().then((result) => setAggregatedItems(result));
         }
-    }, [showDetails]);
+    };
 
     return (
         <div className="external-links-container">
@@ -61,7 +68,8 @@ const App = ({ dataService }: AppProps) => {
                 )}
             </div>
             <div>
-                <button className="external-links-button" onClick={onExport}>Export</button>
+                <button className="external-links-button" style={{ marginRight: "8px" }} onClick={onExport}>Export</button>
+                <a className="epi-functionLink" href="#" onClick={onRefresh}>Refresh</a>
             </div>
         </div>
     );
