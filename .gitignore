@@ -27,3 +27,5 @@ License.config
 *.nupkg
 
 out/
+
+/src/ExtendedExternalLinks/ClientResources/external-links-widget.js
