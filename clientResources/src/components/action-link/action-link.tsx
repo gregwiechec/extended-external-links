@@ -12,7 +12,7 @@ const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href, childr
             target: "_blank"
         }
     }
-    return <a href={href} {...props}>{children}</a>;
+    return <a className="epi-functionLink" href={href} {...props}>{children}</a>;
 };
 
 export default ActionLink;

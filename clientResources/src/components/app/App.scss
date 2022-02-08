@@ -1,5 +1,12 @@
 .external-links-container {
     padding-bottom: 50px;
+
+    label {
+        input[type="checkbox"] {
+            margin: 2px 4px 0 0;
+            vertical-align: top;
+        }
+    }
 }
 
 .external-links-button {
@@ -20,6 +27,9 @@
     max-width: 500px;
 
     tr {
-        padding: 4px 0;
+        th,
+        td {
+            padding: 4px 0;
+        }
     }
 }

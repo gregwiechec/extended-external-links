@@ -44,3 +44,5 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
 };
 
 export default AggregatedItemsList;
+
+//TODO: LINKS refresh component on show
