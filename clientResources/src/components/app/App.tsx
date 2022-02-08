@@ -21,9 +21,10 @@ const App = ({ dataService }: AppProps) => {
     const [aggregatedItems, setAggregatedItems] = useState<AggregatedDataItem[]>([]);
 
     const onExport = () => {
-        dataService?.loadItems().then(result => {
-            const csvContent = "data:text/csv;charset=utf-8,"
-                + (result || []).map(x => x.contentName + "," + x.contentUrl + "," + x.externalLink).join("\n");
+        dataService?.loadItems().then((result) => {
+            const csvContent =
+                "data:text/csv;charset=utf-8," +
+                (result || []).map((x) => x.contentName + "," + x.contentUrl + "," + x.externalLink).join("\n");
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
@@ -35,30 +36,33 @@ const App = ({ dataService }: AppProps) => {
 
     useEffect(() => {
         if (showDetails) {
-            dataService?.loadItems().then(result => setDetailedItems(result));
+            dataService?.loadItems().then((result) => setDetailedItems(result));
         } else {
-            dataService?.loadAggregatedItems().then(result => setAggregatedItems(result));
+            dataService?.loadAggregatedItems().then((result) => setAggregatedItems(result));
         }
     }, [showDetails]);
 
     return (
         <div>
-                <div>
-                    <label>
-                        <input type="checkbox" checked={showDetails} onChange={x => setShowDetails(x.target.checked)} />Show details
-                    </label>
-                </div>
-                <div>
-                    {showDetails ? <DetailedItemsList items={detailedItems} /> :
-                        <AggregatedItemsList items={aggregatedItems} />}
-                </div>
-                <div>
-                    <button
-                        onClick={onExport}
-                    >
-                        Export
-                    </button>
-                </div>
+            <hgroup className="epi-heading-group">
+                <h2 className="epi-heading">External links</h2>
+            </hgroup>
+            <div>
+                <label>
+                    <input type="checkbox" checked={showDetails} onChange={(x) => setShowDetails(x.target.checked)} />
+                    Show details
+                </label>
+            </div>
+            <div>
+                {showDetails ? (
+                    <DetailedItemsList items={detailedItems} />
+                ) : (
+                    <AggregatedItemsList items={aggregatedItems} />
+                )}
+            </div>
+            <div>
+                <button onClick={onExport}>Export</button>
+            </div>
         </div>
     );
 };
