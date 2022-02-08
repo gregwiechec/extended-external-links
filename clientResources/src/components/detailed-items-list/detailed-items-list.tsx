@@ -39,7 +39,7 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
                             <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
                         </td>
                         <td>
-                            <ActionLink href={x.contentUrl} newWindow>{x.contentName}</ActionLink>
+                            <ActionLink href={x.contentUrl}>{x.contentName}</ActionLink>
                         </td>
                     </tr>
                 ))}
@@ -50,3 +50,4 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
 
 export default DetailedItemsList;
 //TODO: LINKS add resources
+//TODO: LINKS content link should not change URL
