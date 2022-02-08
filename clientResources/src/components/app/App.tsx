@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// @ts-ignore
-import { Button, Checkbox, Grid, GridCell, GridContainer } from "optimizely-oui";
 import { dataService as defaultDataService } from "../../data-service/data-service";
 import { AggregatedDataItem, DataItem, DataService } from "../../definitions";
 import { useServerSettingsContext } from "../../server-settings";
@@ -44,27 +42,24 @@ const App = ({ dataService }: AppProps) => {
     }, [showDetails]);
 
     return (
-        <GridContainer>
-            <Grid>
-                <GridCell large={12} medium={8} small={4}>
-                    <Checkbox checked={showDetails} label="Show details"
-                              onChange={x => setShowDetails(x.target.checked)} />
-                </GridCell>
-                <GridCell large={12} medium={8} small={4}>
+        <div>
+                <div>
+                    <label>
+                        <input type="checkbox" checked={showDetails} onChange={x => setShowDetails(x.target.checked)} />Show details
+                    </label>
+                </div>
+                <div>
                     {showDetails ? <DetailedItemsList items={detailedItems} /> :
                         <AggregatedItemsList items={aggregatedItems} />}
-                </GridCell>
-                <GridCell large={12} medium={8} small={4}>
-                    <Button
-                        size="narrow"
-                        leftIcon="file"
+                </div>
+                <div>
+                    <button
                         onClick={onExport}
                     >
                         Export
-                    </Button>
-                </GridCell>
-            </Grid>
-        </GridContainer>
+                    </button>
+                </div>
+        </div>
     );
 };
 

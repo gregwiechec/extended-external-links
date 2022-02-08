@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "optimizely-oui";
 import { DataItem } from "../../definitions";
 import { useSortState } from "../../table-sort";
 import NoData from "../no-data/no-data";
@@ -22,30 +21,30 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
     }
 
     return (
-        <Table>
-            <Table.THead>
-                <Table.TR>
-                    <Table.TH textAlign="left" sorting={sortState.getSortDetails("externalLink")}>
+        <table>
+            <thead>
+                <tr>
+                    <th>
                         Web address
-                    </Table.TH>
-                    <Table.TH textAlign="left" sorting={sortState.getSortDetails("contentName")}>
+                    </th>
+                    <th>
                         Content
-                    </Table.TH>
-                </Table.TR>
-            </Table.THead>
-            <Table.TBody>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
                 {sortState.tableData.map((x, index) => (
-                    <Table.TR key={index}>
-                        <Table.TD>
+                    <tr key={index}>
+                        <td>
                             <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
-                        </Table.TD>
-                        <Table.TD width="20%">
+                        </td>
+                        <td>
                             <ActionLink href={x.contentUrl} newWindow>{x.contentName}</ActionLink>
-                        </Table.TD>
-                    </Table.TR>
+                        </td>
+                    </tr>
                 ))}
-            </Table.TBody>
-        </Table>
+            </tbody>
+        </table>
     );
 };
 

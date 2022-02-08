@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Table } from "optimizely-oui";
 import { AggregatedDataItem } from "../../definitions";
 import { useSortState } from "../../table-sort";
 import NoData from "../no-data/no-data";
@@ -21,28 +20,28 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
     }
 
     return (
-        <Table>
-            <Table.THead>
-                <Table.TR>
-                    <Table.TH textAlign="left" sorting={sortState.getSortDetails("externalLink")}>
+        <table>
+            <thead>
+                <tr>
+                    <th>
                         Web address
-                    </Table.TH>
-                    <Table.TH textAlign="left" sorting={sortState.getSortDetails("count")}>
+                    </th>
+                    <th>
                         Number of linking content items
-                    </Table.TH>
-                </Table.TR>
-            </Table.THead>
-            <Table.TBody>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
                 {sortState.tableData.map((x) => (
-                    <Table.TR key={x.externalLink}>
-                        <Table.TD>
+                    <tr key={x.externalLink}>
+                        <td>
                             <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
-                        </Table.TD>
-                        <Table.TD width="20%">{x.count}</Table.TD>
-                    </Table.TR>
+                        </td>
+                        <td width="20%">{x.count}</td>
+                    </tr>
                 ))}
-            </Table.TBody>
-        </Table>
+            </tbody>
+        </table>
     );
 };
 

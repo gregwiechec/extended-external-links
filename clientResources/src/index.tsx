@@ -3,12 +3,10 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import ServerSettingsContext, {ServerSettings} from "./server-settings";
 import "./index.css";
-import "optimizely-oui/dist/styles.css";
 import App from "./components/app/App";
 
 import declare from "dojo/_base/declare";
 import WidgetBase from "dijit/_WidgetBase";
-
 
 export default declare([WidgetBase], {
     postCreate: function() {
