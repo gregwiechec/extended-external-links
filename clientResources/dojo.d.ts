@@ -3,6 +3,11 @@ declare module "dojo/_base/declare" {
     export = declare;
 }
 
+declare module "dojo/topic" {
+    let declare: any;
+    export = declare;
+}
+
 declare module "dijit/_WidgetBase" {
     let _WidgetBase: any;
     export = _WidgetBase;

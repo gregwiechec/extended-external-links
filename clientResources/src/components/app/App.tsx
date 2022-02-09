@@ -8,9 +8,10 @@ import "./App.scss";
 
 interface AppProps {
     dataService?: DataService;
+    onContentClick: (item: DataItem) => void;
 }
 
-const App = ({ dataService }: AppProps) => {
+const App = ({ dataService, onContentClick }: AppProps) => {
     if (!dataService) {
         dataService = defaultDataService;
     }
@@ -62,7 +63,7 @@ const App = ({ dataService }: AppProps) => {
             </div>
             <div>
                 {showDetails ? (
-                    <DetailedItemsList items={detailedItems} />
+                    <DetailedItemsList items={detailedItems} onContentClick={onContentClick} />
                 ) : (
                     <AggregatedItemsList items={aggregatedItems} />
                 )}

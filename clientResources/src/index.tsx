@@ -6,7 +6,9 @@ import "./index.css";
 import App from "./components/app/App";
 
 import declare from "dojo/_base/declare";
+import topic from "dojo/topic";
 import WidgetBase from "dijit/_WidgetBase";
+import { DataItem } from "./definitions";
 
 export default declare([WidgetBase], {
     postCreate: function() {
@@ -21,10 +23,18 @@ export default declare([WidgetBase], {
             contentUrl: configuration.contentUrl
         };
 
+        const self = this;
+        function changeContext(item: DataItem) {
+            const callerData = {
+                sender: self
+            };
+            topic.publish("/epi/shell/context/request", { uri: "epi.cms.contentdata:///" + item.contentLink }, callerData);
+        }
+
         ReactDOM.render(
             <React.StrictMode>
                 <ServerSettingsContext.Provider value={settings}>
-                    <App />
+                    <App onContentClick={changeContext} />
                 </ServerSettingsContext.Provider>
             </React.StrictMode>,
             this.domNode

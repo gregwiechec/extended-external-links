@@ -11,7 +11,7 @@ export const fakeDataService: DataService = {
     }
 };
 
-const externalURLs = ["https://www.google.com", "http://microsoft.com", "https://www.amazon.com"];
+const externalURLs = ["https://www.google.com", "https://microsoft.com", "https://www.amazon.com"];
 
 const convertDetailedItems = (numberOfItems: number): AggregatedDataItem[] => {
     const items = getDetailedItems(numberOfItems);
@@ -38,7 +38,8 @@ export const getDetailedItems = (numberOfItems = 10): DataItem[] => {
         result.push({
             externalLink: externalURLs[i % externalURLs.length],
             contentUrl: "https://optimizely.com",
-            contentName: contentNames[i % contentNames.length]
+            contentName: contentNames[i % contentNames.length],
+            contentLink: (i % contentNames.length).toString()
         });
     }
     return result;

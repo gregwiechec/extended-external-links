@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { DataItem } from "../../definitions";
 import { useSortState } from "../../table-sort";
 import NoData from "../no-data/no-data";
@@ -6,9 +6,10 @@ import ActionLink from "../action-link/action-link";
 
 interface ItemsListProps {
     items: DataItem[];
+    onContentClick: (item: DataItem) => void;
 }
 
-const DetailedItemsList = ({ items }: ItemsListProps) => {
+const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
     const sortState = useSortState(items);
 
     useEffect(() => {
@@ -19,6 +20,11 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
         // @ts-ignore
         return <NoData />;
     }
+
+    const onContentItemClicked = (e, item: DataItem) => {
+        e.preventDefault();
+        onContentClick(item);
+    };
 
     return (
         <table className="external-links-table">
@@ -39,7 +45,7 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
                             <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
                         </td>
                         <td>
-                            <ActionLink href={x.contentUrl}>{x.contentName}</ActionLink>
+                            <ActionLink href="#" onClick={e => onContentItemClicked(e, x)}>{x.contentName}</ActionLink>
                         </td>
                     </tr>
                 ))}
@@ -50,4 +56,3 @@ const DetailedItemsList = ({ items }: ItemsListProps) => {
 
 export default DetailedItemsList;
 //TODO: LINKS add resources
-//TODO: LINKS content link should not change URL
