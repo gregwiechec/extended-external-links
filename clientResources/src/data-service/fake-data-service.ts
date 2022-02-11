@@ -35,7 +35,6 @@ export const getDetailedItems = (numberOfItems = 10): DataItem[] => {
     for (let i = 0; i < numberOfItems; i++) {
         result.push({
             externalLink: externalURLs[i % externalURLs.length],
-            contentUrl: "https://optimizely.com",
             contentName: contentNames[i % contentNames.length],
             contentLink: (i % contentNames.length).toString()
         });

@@ -15,12 +15,10 @@ export default declare([WidgetBase], {
         //const rootElement = document.getElementById("root");
         const configuration = {
             baseUrl: "",
-            contentUrl: ""
         };//JSON.parse(rootElement?.dataset?.configuration || "{}");
         axios.defaults.baseURL = configuration.baseUrl;
 
         const settings: ServerSettings = {
-            contentUrl: configuration.contentUrl
         };
 
         const self = this;

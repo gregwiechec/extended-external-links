@@ -28,7 +28,6 @@ const Template: ComponentStory<typeof Component> = (args) => <Component {...args
 const getDefaultProps = (dataService: DataService) => {
     return {
         dataService: dataService,
-        contentUrl: "http://google.com/{contentLink}",
         onContentClick: (item: DataItem) => alert(item.contentLink)
     };
 };

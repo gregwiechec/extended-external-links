@@ -1,11 +1,9 @@
 import { createContext, useContext } from "react";
 
 export type ServerSettings = {
-    readonly contentUrl: string;
 }
 
 const defaultSettings: ServerSettings = {
-    contentUrl: "",
 };
 
 const ServerSettingsContext = createContext<ServerSettings>(defaultSettings);
