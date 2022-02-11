@@ -3,7 +3,7 @@ using EPiServer.Shell.ViewComposition;
 
 namespace ExtendedExternalLinks.Component
 {
-    public class ExternalLinksComponent : ComponentDefinitionBase
+    internal class ExternalLinksComponent : ComponentDefinitionBase
     {
         public ExternalLinksComponent() : base("extended-external-links/external-links-component")
         {
