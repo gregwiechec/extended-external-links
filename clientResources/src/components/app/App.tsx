@@ -55,7 +55,7 @@ const App = ({ dataService, onContentClick }: AppProps) => {
             <hgroup className="epi-heading-group">
                 <h2 className="epi-heading">External links</h2>
             </hgroup>
-            <div>
+            <div className="filters">
                 <label>
                     <input type="checkbox" checked={showDetails} onChange={(x) => setShowDetails(x.target.checked)} />
                     Show details

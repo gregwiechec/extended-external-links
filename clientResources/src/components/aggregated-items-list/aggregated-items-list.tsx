@@ -35,7 +35,7 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
                                 {x.externalLink}
                             </ActionLink>
                         </td>
-                        <td width="20%">{x.count}</td>
+                        <td>{x.count}</td>
                     </tr>
                 ))}
             </tbody>
