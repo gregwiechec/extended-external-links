@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { dataService as defaultDataService } from "../../data-service/data-service";
-import { AggregatedDataItem, DataItem, DataService } from "../../definitions";
+import { AggregatedDataItem, DataItem } from "../../definitions";
 import { useServerSettingsContext } from "../../server-settings";
 import AggregatedItemsList from "./aggregated-items-list/aggregated-items-list";
 import DetailedItemsList from "./detailed-items-list/detailed-items-list";
 import "./external-links-list.scss";
 
 interface AppProps {
-    dataService?: DataService;
     onContentClick: (item: DataItem) => void;
 }
 
 // searchable list of external links
-const ExternalLinksList = ({ dataService, onContentClick }: AppProps) => {
-    if (!dataService) {
-        dataService = defaultDataService;
-    }
-
+const ExternalLinksList = ({ onContentClick }: AppProps) => {
     const serverSettings = useServerSettingsContext();
     const [showDetails, setShowDetails] = useState(false);
     const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
@@ -31,9 +25,9 @@ const ExternalLinksList = ({ dataService, onContentClick }: AppProps) => {
             e.preventDefault();
         }
         if (showDetails) {
-            dataService?.loadItems().then((result) => setDetailedItems(result));
+            serverSettings.dataService.loadItems().then((result) => setDetailedItems(result));
         } else {
-            dataService?.loadAggregatedItems().then((result) => setAggregatedItems(result));
+            serverSettings.dataService.loadAggregatedItems().then((result) => setAggregatedItems(result));
         }
     };
 

@@ -13,7 +13,7 @@ interface ComponentProps extends ServerSettings {
 const Component = (settings: ComponentProps) => {
     return (
         <ServerSettingsContext.Provider value={settings}>
-            <ExternalLinksList dataService={settings.dataService} onContentClick={settings.onContentClick}/>
+            <ExternalLinksList onContentClick={settings.onContentClick}/>
         </ServerSettingsContext.Provider>
     );
 };

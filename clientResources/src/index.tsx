@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import ServerSettingsContext, {ServerSettings} from "./server-settings";
 import "./index.css";
-import App from "./components/app/App";
+import App from "./components/external-links-list/external-links-list";
 
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
 import WidgetBase from "dijit/_WidgetBase";
 import { DataItem } from "./definitions";
+import {dataService as defaultDataService} from "./data-service/data-service";
 
 export default declare([WidgetBase], {
     postCreate: function() {
@@ -19,6 +20,7 @@ export default declare([WidgetBase], {
         axios.defaults.baseURL = configuration.baseUrl;
 
         const settings: ServerSettings = {
+            dataService: defaultDataService
         };
 
         const self = this;
