@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { dataService as defaultDataService } from "../../data-service/data-service";
 import { AggregatedDataItem, DataItem, DataService } from "../../definitions";
 import { useServerSettingsContext } from "../../server-settings";
-import AggregatedItemsList from "../aggregated-items-list/aggregated-items-list";
-import DetailedItemsList from "../detailed-items-list/detailed-items-list";
-import "./App.scss";
+import AggregatedItemsList from "./aggregated-items-list/aggregated-items-list";
+import DetailedItemsList from "./detailed-items-list/detailed-items-list";
+import "./external-links-list.scss";
 
 interface AppProps {
     dataService?: DataService;
     onContentClick: (item: DataItem) => void;
 }
 
-const App = ({ dataService, onContentClick }: AppProps) => {
+// searchable list of external links
+const ExternalLinksList = ({ dataService, onContentClick }: AppProps) => {
     if (!dataService) {
         dataService = defaultDataService;
     }
@@ -62,7 +63,7 @@ const App = ({ dataService, onContentClick }: AppProps) => {
     );
 };
 
-export default App;
+export default ExternalLinksList;
 
 //TODO: LINKS fix issue when reloading the page
 //TODO: LINKS hide button when reloading the page

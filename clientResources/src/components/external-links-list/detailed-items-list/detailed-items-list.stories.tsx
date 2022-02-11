@@ -1,11 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import DetailedItemsList from "./detailed-items-list";
-import "./../app/App.scss";
-import { getDetailedItems } from "../../data-service/fake-data-service";
+import { getDetailedItems } from "../../../data-service/fake-data-service";
+import "./../external-links-list.scss";
 
 export default {
-    title: "List/Details",
+    title: "External links list/Details",
     component: DetailedItemsList
 } as ComponentMeta<typeof DetailedItemsList>;
 

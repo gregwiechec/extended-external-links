@@ -3,7 +3,7 @@ import {ComponentStory, ComponentMeta} from "@storybook/react";
 import {fakeDataService} from "../../data-service/fake-data-service";
 import ServerSettingsContext, {ServerSettings} from "./../../server-settings";
 import {DataItem, DataService} from "../../definitions";
-import App from "./App";
+import ExternalLinksList from "./external-links-list";
 
 interface ComponentProps extends ServerSettings {
     dataService: DataService;
@@ -13,13 +13,13 @@ interface ComponentProps extends ServerSettings {
 const Component = (settings: ComponentProps) => {
     return (
         <ServerSettingsContext.Provider value={settings}>
-            <App dataService={settings.dataService} onContentClick={settings.onContentClick}/>
+            <ExternalLinksList dataService={settings.dataService} onContentClick={settings.onContentClick}/>
         </ServerSettingsContext.Provider>
     );
 };
 
 export default {
-    title: "App",
+    title: "External links list",
     component: Component
 } as ComponentMeta<typeof Component>;
 
@@ -32,5 +32,5 @@ const getDefaultProps = (dataService: DataService) => {
     };
 };
 
-export const AppStory = Template.bind({});
-AppStory.args = getDefaultProps(fakeDataService);
+export const ExternalLinksListStory = Template.bind({});
+ExternalLinksListStory.args = getDefaultProps(fakeDataService);

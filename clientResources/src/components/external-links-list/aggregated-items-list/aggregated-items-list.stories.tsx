@@ -1,11 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import AggregatedItemsList from "./aggregated-items-list";
-import "./../app/App.scss";
-import { getAggregatedItems } from "../../data-service/fake-data-service";
+import { getAggregatedItems } from "../../../data-service/fake-data-service";
+import "./../external-links-list.scss";
 
 export default {
-    title: "List/Aggregated",
+    title: "External links list/Aggregated",
     component: AggregatedItemsList
 } as ComponentMeta<typeof AggregatedItemsList>;
 

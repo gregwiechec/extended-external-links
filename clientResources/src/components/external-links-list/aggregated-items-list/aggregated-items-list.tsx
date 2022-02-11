@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { AggregatedDataItem } from "../../definitions";
-import { useSortState } from "../../table-sort";
+import { AggregatedDataItem } from "../../../definitions";
+import { useSortState } from "../../../table-sort";
 import NoData from "../no-data/no-data";
 import ActionLink from "../action-link/action-link";
 

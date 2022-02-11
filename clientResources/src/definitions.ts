@@ -1,7 +1,6 @@
 export type DataItem = {
     externalLink: string;
     contentName: string;
-    contentUrl: string;
     contentLink: string;
 };
 
