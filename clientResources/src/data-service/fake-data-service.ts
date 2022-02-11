@@ -6,9 +6,7 @@ export const fakeDataService: DataService = {
     }),
     loadAggregatedItems: () => new Promise(resolve => {
         resolve(convertDetailedItems(50));
-    }),
-    export: () => {
-    }
+    })
 };
 
 const externalURLs = ["https://www.google.com", "https://microsoft.com", "https://www.amazon.com"];

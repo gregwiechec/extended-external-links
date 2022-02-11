@@ -13,11 +13,27 @@
     }
 }
 
-.external-links-button {
+@mixin external-link-button {
+    display: inline-block;
+    padding: 3px 10px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.refresh-button {
+    @include external-link-button;
+    background: #ffffff;
+    border: 1px solid #9e9e9e;
+    height: 30px;
+    cursor: pointer;
+}
+
+a.external-links-button {
+    @include external-link-button;
     background: #0037ff;
     border-color: #0037ff;
     color: #ffffff;
-    padding: 3px 10px;
+    border-radius: 2px;
 }
 
 .external-links-no-data {

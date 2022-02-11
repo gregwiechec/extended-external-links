@@ -13,5 +13,4 @@ export type AggregatedDataItem = {
 export type DataService = {
     loadItems: () => Promise<DataItem[]>;
     loadAggregatedItems: () => Promise<AggregatedDataItem[]>;
-    export: () => void;
 };

@@ -1,4 +1,8 @@
-﻿using EPiServer.Security;
+﻿using System;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using EPiServer.Security;
 using EPiServer.Shell.Services.Rest;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +36,19 @@ namespace ExtendedExternalLinks
         {
             var list = _linksManager.GetAggregatedItems(_principalAccessor.Principal);
             return new RestResult { Data = list };
+        }
+
+        [Route("[action]")]
+        [HttpGet]
+        public IActionResult Export()
+        {
+            var list = _linksManager.GetItems(_principalAccessor.Principal);
+            var result = string.Join(Environment.NewLine, list.Select(x => x.ContentLink + ";" + x.ContentName + ";" + x.ExternalLink));
+
+            const string fileName = "external links.csv";
+            var fileBytes = Encoding.UTF8.GetBytes(result);
+
+            return File(fileBytes, "text/csv", fileName);
         }
     }
 }

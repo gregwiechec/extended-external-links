@@ -18,8 +18,7 @@ export const dataService: DataService = {
                     resolve(result.data);
                 })
                 .catch(() => resolve([]));
-        }),
-    export: () => undefined
+        })
 };
 
 //TODO: LINKS Implement server method
