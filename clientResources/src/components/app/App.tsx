@@ -63,3 +63,6 @@ const App = ({ dataService, onContentClick }: AppProps) => {
 };
 
 export default App;
+
+//TODO: LINKS fix issue when reloading the page
+//TODO: LINKS hide button when reloading the page
