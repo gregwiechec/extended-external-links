@@ -18,12 +18,6 @@ namespace ExtendedExternalLinks
             _principalAccessor = principalAccessor;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return new RestResult { Data = new { aaa = 1 } };
-        }
-
         [Route("[action]")]
         [HttpGet]
         public ActionResult GetItems()

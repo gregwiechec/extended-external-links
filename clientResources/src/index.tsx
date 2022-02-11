@@ -44,22 +44,4 @@ export default declare([WidgetBase], {
         ReactDOM.unmountComponentAtNode(this.domNode);
     }
 });
-
-/*
-const rootElement = document.getElementById("root");
-const configuration = JSON.parse(rootElement?.dataset?.configuration || "{}");
-axios.defaults.baseURL = configuration.baseUrl;
-
-const settings: ServerSettings = {
-    contentUrl: configuration.contentUrl
-};
-
-ReactDOM.render(
-    <React.StrictMode>
-        <ServerSettingsContext.Provider value={settings}>
-            <App />
-        </ServerSettingsContext.Provider>
-    </React.StrictMode>,
-    document.getElementById("root")
-);
-*/
+//TODO: LINKS server view is rendered with id

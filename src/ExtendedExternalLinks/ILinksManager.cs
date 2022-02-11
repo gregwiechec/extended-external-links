@@ -74,6 +74,7 @@ namespace ExtendedExternalLinks
             var items = temp.Select(item => new LinkDetailsData
             {
                 ExternalLink = item.Url, ContentName = item.Content.Name,
+                ContentLink = item.Content.ContentLink,
                 ContentUrl = PageEditing.GetEditUrl(item.Content.ContentLink)
             });
             return items.OrderBy(item => item.ExternalLink);
@@ -141,9 +142,10 @@ namespace ExtendedExternalLinks
 
     public class LinkDetailsData
     {
-        public string ExternalLink { get; internal set; }
+        public ContentReference ContentLink { get; set; }
         public string ContentName { get; internal set; }
         public string ContentUrl { get; internal set; }
+        public string ExternalLink { get; internal set; }
     }
 
     public class UrlContentReferencePair
