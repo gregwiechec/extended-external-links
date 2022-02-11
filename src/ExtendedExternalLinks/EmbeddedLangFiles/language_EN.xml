@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<languages>
+  <language name="English" id="en">
+    <externallinks>
+      <component>
+          <description>Lists all external links used on the site</description>
+          <title>External links</title>
+      </component>
+      <common>
+        <hits>Number of linking content items</hits>
+        <host>Web Address</host>
+      </common>
+      <details>
+        <content>Content</content>
+        <link>Web Address</link>
+        <page>Page</page>
+      </details>
+      <showdetails>Show details</showdetails>
+    </externallinks>
+  </language>
+</languages>

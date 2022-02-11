@@ -20,7 +20,7 @@ namespace ExtendedExternalLinks
 
                 DataType = typeof(ExternalLinksContext).FullName?.ToLowerInvariant() ?? "",
 
-                CustomViewType = "extended-external-links/external-links-component"
+                CustomViewType = "extended-external-links/external-links-view"
             };
 
 

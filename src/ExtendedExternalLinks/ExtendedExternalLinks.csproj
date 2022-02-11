@@ -15,4 +15,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Views\**" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="EmbeddedLangFiles\language_EN.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedLangFiles\language_EN.xml" />
+  </ItemGroup>
 </Project>

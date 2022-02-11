@@ -1,48 +1,85 @@
 define([
+    // Dojo
+    "dojo",
     "dojo/_base/declare",
-    "dijit/layout/_LayoutWidget",
+    "dojo/_base/lang",
+    "dojo/dom-construct",
+    "dojo/dom-geometry",
+    "dojo/topic",
+
+    // Dijit
     "dijit/_TemplatedMixin",
+    "dijit/_Container",
+    "dijit/layout/_LayoutWidget",
     "dijit/_WidgetsInTemplateMixin",
-	"epi/shell/command/builder/ButtonBuilder",
-	"dojo/Stateful",
-	"epi/shell/DestroyableByKey",
-	"epi-cms/content-approval/command/CancelChanges",
-    "./external-links-widget",
-    "dojo/text!./templates/external-links-component.html",
 
-    // Widgets in template
-    "dijit/Toolbar"
+    // EPi Framework
+    "epi",
+
+    // EPi CMS
+   
+    "epi/i18n!epi/cms/nls/episerver.cms.components.tasks"
 ], function (
+    // Dojo
+    dojo,
     declare,
-	_LayoutWidget,
-	_TemplatedMixin,
-	_WidgetsInTemplateMixin,
-	ButtonBuilder,
-	Stateful,
-	DestroyableByKey,
-	CancelChanges,
-    ExternalLinksWidget,
-    template
+    lang,
+    domConstruct,
+    domGeometry,
+    topic,
+
+    // Dijit
+    _TemplatedMixin,
+    _Container,
+    _LayoutWidget,
+    _WidgetsInTemplateMixin,
+
+    // EPi Framework
+    epi,
+
+    // EPi CMS
+    resources
 ) {
-	var Model = declare([Stateful, DestroyableByKey], {
-		isDirty: false
-	});
 
+    return declare([_Container, _LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin], {
 
-    return declare([_LayoutWidget, _TemplatedMixin, _WidgetsInTemplateMixin], {
-        templateString: template,
+        templateString: "<div>aaa</div>",
 
-		buildRendering: function () {
+        resources: resources,
+/*
+        querySelection: null,
+
+        // model: [ReadOnly] TasksViewModel
+        //      The model for the view
+        model: null,
+
+        _selectionChangedEventHandler: null,
+
+        buildRendering: function () {
+
             this.inherited(arguments);
 
-            var model = new Model();
-			var builder = new ButtonBuilder();
-            var cancelCommand = new CancelChanges({ model: model, order: 20 })
-            builder.create(cancelCommand, this.commandNode);
+            this.model = new TasksViewModel({ categories: this.categories });
 
-            var externalLinksWidget = new ExternalLinksWidget();
-            this.own(externalLinksWidget);
-            externalLinksWidget.placeAt(this.externalWidgetNode);
+            this.querySelection = new Select({
+                name: "QuerySelection",
+                options: this.model.getOptions()
+            });
+
+            domConstruct.place(this.querySelection.domNode, this.reloadButton.domNode, "before");
+
+            this.own(
+                this.querySelection.on("change", lang.hitch(this, this._reloadQuery)),
+                topic.subscribe("/epi/cms/action/refreshmytasks", lang.hitch(this, this._reloadQuery))
+            );
+        },
+*/
+
+        startup: function () {
+            this.inherited(arguments);
+
+            // Set the initial query after the grid has been initialized
+            //this._reloadQuery();
         }
     });
 });
