@@ -1,8 +1,8 @@
 import React from "react";
-import {ComponentStory, ComponentMeta} from "@storybook/react";
-import {fakeDataService} from "../../data-service/fake-data-service";
-import ServerSettingsContext, {ServerSettings} from "./../../server-settings";
-import {DataItem, DataService} from "../../definitions";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { fakeDataService } from "../../data-service/fake-data-service";
+import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
+import { DataItem, DataService } from "../../definitions";
 import ExternalLinksList from "./external-links-list";
 
 interface ComponentProps extends ServerSettings {
@@ -13,7 +13,9 @@ interface ComponentProps extends ServerSettings {
 const Component = (settings: ComponentProps) => {
     return (
         <ServerSettingsContext.Provider value={settings}>
-            <ExternalLinksList onContentClick={settings.onContentClick}/>
+            <div className="external-links-container">
+                <ExternalLinksList onContentClick={settings.onContentClick} />
+            </div>
         </ServerSettingsContext.Provider>
     );
 };

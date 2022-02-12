@@ -32,28 +32,27 @@ const ExternalLinksList = ({ onContentClick }: AppProps) => {
     };
 
     return (
-        <div className="external-links-container">
-            <hgroup className="epi-heading-group">
-                <h2 className="epi-heading">External links</h2>
-            </hgroup>
+        <>
             <div className="filters">
                 <label>
                     <input type="checkbox" checked={showDetails} onChange={(x) => setShowDetails(x.target.checked)} />
                     Show details
                 </label>
             </div>
+            {showDetails ? (
+                <DetailedItemsList items={detailedItems} onContentClick={onContentClick} />
+            ) : (
+                <AggregatedItemsList items={aggregatedItems} />
+            )}
             <div>
-                {showDetails ? (
-                    <DetailedItemsList items={detailedItems} onContentClick={onContentClick} />
-                ) : (
-                    <AggregatedItemsList items={aggregatedItems} />
-                )}
+                <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>
+                    Refresh
+                </button>
+                <a className="external-links-button" href="/ExternalLinks/export">
+                    Export
+                </a>
             </div>
-            <div>
-                <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>Refresh</button>
-                <a className="external-links-button" href="/ExternalLinks/export">Export</a>
-            </div>
-        </div>
+        </>
     );
 };
 

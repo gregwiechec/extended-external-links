@@ -1,5 +1,6 @@
 .external-links-container {
-    padding-bottom: 50px;
+    padding: 0 0 50px 16px;
+    height: 100%;
 
     .filters {
         margin-top: 10px;
@@ -45,11 +46,45 @@ a.external-links-button {
     margin-top: 10px;
     width: 100%;
     max-width: 500px;
+    border-spacing: 0;
+    height: calc(100% - 50px);
+
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+    }
+
+    tbody {
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: calc(100% - 20px);
+    }
 
     tr {
+        /* fallback */
+        width: 97%;
+        height: initial;
+        /* minus scroll bar width */
+        width: -webkit-calc(100% - 16px);
+        width: -moz-calc(100% - 16px);
+        width: calc(100% - 16px);
+
+        &:after {
+            /* clearing float */
+            content: " ";
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
         th,
         td {
             padding: 4px 0;
+            width: 50%;
+            float: left;
         }
     }
 }

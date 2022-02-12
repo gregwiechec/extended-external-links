@@ -1,4 +1,15 @@
+const path = require("path");
 const config = {
+    entry: {
+        "external-links-widget": "./src/index.tsx",
+        "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx"
+    },
+    output: {
+        filename: "[name].js",
+        libraryTarget: "amd",
+        libraryExport: "default",
+        path: path.resolve(__dirname, "../src/ExtendedExternalLinks/ClientResources")
+    },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
@@ -19,10 +30,10 @@ const config = {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 use: [
                     {
-                        loader: 'file-loader',
+                        loader: "file-loader",
                         options: {
-                            name: '[name].[ext]',
-                            outputPath: 'fonts/'
+                            name: "[name].[ext]",
+                            outputPath: "fonts/"
                         }
                     }
                 ]
@@ -41,7 +52,15 @@ const config = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [],
+    externals: [
+        "dojo/_base/declare",
+        "dojo/topic",
+        "dijit/_WidgetBase",
+        "epi-cms/ApplicationSettings",
+        "epi-cms/_ContentContextMixin"
+    ]
 };
 
 module.exports = (env, argv) => {
