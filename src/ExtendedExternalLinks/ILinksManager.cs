@@ -135,17 +135,17 @@ namespace ExtendedExternalLinks
 
     public class LinkCommonData
     {
-        public string Host { get; internal set; }
-        public string ExternalLink { get; internal set; }
-        public int Count { get; internal set; }
+        public string Host { get; set; }
+        public string ExternalLink { get; set; }
+        public int Count { get; set; }
     }
 
     public class LinkDetailsData
     {
         public ContentReference ContentLink { get; set; }
-        public string ContentName { get; internal set; }
-        public string ContentUrl { get; internal set; }
-        public string ExternalLink { get; internal set; }
+        public string ContentName { get; set; }
+        public string ContentUrl { get; set; }
+        public string ExternalLink { get; set; }
     }
 
     public class UrlContentReferencePair

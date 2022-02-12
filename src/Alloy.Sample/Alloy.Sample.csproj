@@ -24,4 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ExtendedExternalLinks\ExtendedExternalLinks.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\ExternalLinks\" />
+  </ItemGroup>
 </Project>
