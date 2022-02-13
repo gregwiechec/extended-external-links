@@ -3,14 +3,16 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import ExternalLinksList from "./../external-links-list/external-links-list";
+import ShowViewCommand from "./show-view-command";
 
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
 import WidgetBase from "dijit/_WidgetBase";
+import _WidgetCommandProviderMixin from "epi/shell/command/_WidgetCommandProviderMixin";
 import { DataItem } from "../../definitions";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
 
-export default declare([WidgetBase], {//TODO: use common mixin for widget and component
+export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use common mixin for widget and component
     "class": "external-links-container",
 
     minHeight: 300,
@@ -37,6 +39,9 @@ export default declare([WidgetBase], {//TODO: use common mixin for widget and co
                 callerData
             );
         }
+
+        this._showViewCommand = new ShowViewCommand();
+        this.add("commands", this._showViewCommand);
 
         ReactDOM.render(
             <React.StrictMode>

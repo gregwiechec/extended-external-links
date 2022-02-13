@@ -10,6 +10,16 @@ const config = {
         libraryExport: "default",
         path: path.resolve(__dirname, "../src/ExtendedExternalLinks/ClientResources")
     },
+    /*optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name() {
+                return 'base';
+            }
+        },
+        concatenateModules: false,
+        chunkIds: 'named'
+    },*/
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
@@ -58,8 +68,11 @@ const config = {
         "dojo/_base/declare",
         "dojo/topic",
         "dijit/_WidgetBase",
+        "dijit/Destroyable",
         "epi-cms/ApplicationSettings",
-        "epi-cms/_ContentContextMixin"
+        "epi-cms/_ContentContextMixin",
+        "epi/shell/command/_WidgetCommandProviderMixin", //TODO: LINKS add module methods to definitions
+        "epi/shell/command/_Command" //TODO: LINKS do not use this dependency
     ]
 };
 

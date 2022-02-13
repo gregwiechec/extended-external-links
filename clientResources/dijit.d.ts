@@ -34,9 +34,13 @@ declare namespace dijit {
     }
 }
 
-
 declare module "dijit/_WidgetBase" {
     type _WidgetBase = dijit._WidgetBase;
     const _WidgetBase: dijit._WidgetBaseConstructor<_WidgetBase>;
     export = _WidgetBase;
+}
+
+declare module "dijit/Destroyable" {
+    const Destroyable: dijit.Destroyable;
+    export = Destroyable;
 }
