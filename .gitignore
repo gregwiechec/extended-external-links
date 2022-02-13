@@ -29,3 +29,4 @@ License.config
 out/
 
 /src/ExtendedExternalLinks/ClientResources/external-links-widget.js
+/src/ExtendedExternalLinks/ClientResources/external-links-component.js
