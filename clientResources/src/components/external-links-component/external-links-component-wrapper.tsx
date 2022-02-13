@@ -4,6 +4,8 @@ import axios from "axios";
 import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import ExternalLinksList from "./../external-links-list/external-links-list";
 import ShowViewCommand from "./show-view-command";
+import RefreshCommand from "./refresh-command";
+import ExportCommand from "./export-command";
 
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
@@ -18,7 +20,6 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use c
     minHeight: 300,
 
     postCreate: function () {
-        //const rootElement = document.getElementById("root");
         const configuration = {
             baseUrl: ""
         }; //JSON.parse(rootElement?.dataset?.configuration || "{}");
@@ -40,8 +41,9 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use c
             );
         }
 
-        this._showViewCommand = new ShowViewCommand();
-        this.add("commands", this._showViewCommand);
+        this.add("commands", new ShowViewCommand());
+        this.add("commands", new RefreshCommand());
+        this.add("commands", new ExportCommand());
 
         ReactDOM.render(
             <React.StrictMode>
