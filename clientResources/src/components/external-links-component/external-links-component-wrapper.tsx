@@ -35,7 +35,7 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
     //TODO: use common mixin for widget and component
     class: "external-links-container",
 
-    minHeight: 300,
+    minHeight: 400,
 
     postCreate: function () {
         const configuration = {
