@@ -5,12 +5,13 @@ import AggregatedItemsList from "./aggregated-items-list/aggregated-items-list";
 import DetailedItemsList from "./detailed-items-list/detailed-items-list";
 import "./external-links-list.scss";
 
-interface AppProps {
+interface ExternalLinksListProps {
     onContentClick: (item: DataItem) => void;
+    reloadIdx?: number;
 }
 
 // searchable list of external links
-const ExternalLinksList = ({ onContentClick }: AppProps) => {
+const ExternalLinksList = ({ onContentClick, reloadIdx }: ExternalLinksListProps) => {
     const serverSettings = useServerSettingsContext();
     const [showDetails, setShowDetails] = useState(false);
     const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
@@ -18,7 +19,7 @@ const ExternalLinksList = ({ onContentClick }: AppProps) => {
 
     useEffect(() => {
         onRefresh(null);
-    }, [showDetails]);
+    }, [showDetails, reloadIdx]);
 
     const onRefresh = (e: any = null) => {
         if (e) {

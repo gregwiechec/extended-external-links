@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
@@ -10,12 +10,30 @@ import ExportCommand from "./export-command";
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
 import WidgetBase from "dijit/_WidgetBase";
+import Destroyable from "dijit/Destroyable";
 import _WidgetCommandProviderMixin from "epi/shell/command/_WidgetCommandProviderMixin";
-import { DataItem } from "../../definitions";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
+import changeContext from "./../../utils/change-context";
 
-export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use common mixin for widget and component
-    "class": "external-links-container",
+const CustomExternalLinks = ({ sender }) => {
+    const [refreshIdx, setRefreshIdx] = useState(1);
+
+    useEffect(() => {
+        let handle = topic.subscribe("/external-links/reload", () => {
+            setRefreshIdx(refreshIdx + 1);
+        });
+        return () => {
+            handle.remove();
+            handle = null;
+        };
+    });
+
+    return <ExternalLinksList onContentClick={changeContext(sender)} reloadIdx={refreshIdx} />;
+};
+
+export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
+    //TODO: use common mixin for widget and component
+    class: "external-links-container",
 
     minHeight: 300,
 
@@ -30,16 +48,6 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use c
         };
 
         const self = this;
-        function changeContext(item: DataItem) {
-            const callerData = {
-                sender: self
-            };
-            topic.publish(
-                "/epi/shell/context/request",
-                { uri: "epi.cms.contentdata:///" + item.contentLink },
-                callerData
-            );
-        }
 
         this.add("commands", new ShowViewCommand());
         this.add("commands", new RefreshCommand());
@@ -48,7 +56,7 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin], {//TODO: use c
         ReactDOM.render(
             <React.StrictMode>
                 <ServerSettingsContext.Provider value={settings}>
-                    <ExternalLinksList onContentClick={changeContext} />
+                    <CustomExternalLinks sender={self} />
                 </ServerSettingsContext.Provider>
             </React.StrictMode>,
             this.domNode
