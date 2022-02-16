@@ -1,7 +1,7 @@
 const path = require("path");
 const config = {
     entry: {
-        "external-links-widget": "./src/index.tsx",
+        "external-links-widget": "./src/components/external-links-view/external-links-widget-wrapper.tsx",
         "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx"
     },
     output: {

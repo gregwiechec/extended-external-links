@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { fakeDataService } from "../../data-service/fake-data-service";
 import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import { DataItem, DataService } from "../../definitions";
-import ExternalLinksList from "./external-links-list";
+import { ExternalLinksView } from "./external-links-view";
 
 interface ComponentProps extends ServerSettings {
     dataService: DataService;
@@ -14,7 +14,7 @@ const Component = (settings: ComponentProps) => {
     return (
         <ServerSettingsContext.Provider value={settings}>
             <div className="external-links-container">
-                <ExternalLinksList onContentClick={settings.onContentClick} />
+                <ExternalLinksView onContentClick={settings.onContentClick} />
             </div>
         </ServerSettingsContext.Provider>
     );

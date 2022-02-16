@@ -1,6 +1,5 @@
 import declare from "dojo/_base/declare";
 import _Command from "epi/shell/command/_Command";
-import topic from "dojo/topic";
 
 export default declare([_Command], {
     label: "Export", //TODO: LINKS resources
@@ -11,6 +10,10 @@ export default declare([_Command], {
     isActive: true,
 
     _execute: () => {
-        topic.publish("/external-links/export");
+        const link = document.createElement("a");
+        link.setAttribute("href", "/ExternalLinks/export"); //TODO: LINKS fix URL to export
+        link.setAttribute("download", "export.csv");
+        document.body.appendChild(link); // Required for FF
+        link.click(); // This will download the data file named "my_data.csv".
     }
 });
