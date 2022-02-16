@@ -11,7 +11,7 @@ import declare from "dojo/_base/declare";
 import WidgetBase from "dijit/_WidgetBase";
 
 export default declare([WidgetBase], {
-    class: "external-links-container",
+    class: "external-links-view-container",
 
     postCreate: function () {
         const configuration = {

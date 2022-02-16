@@ -17,7 +17,7 @@ import _WidgetCommandProviderMixin from "epi/shell/command/_WidgetCommandProvide
 
 export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
     //TODO: use common mixin for widget and component
-    class: "external-links-container",
+    class: "external-links-component-container",
 
     minHeight: 400,
 
