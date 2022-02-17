@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import ServerSettingsContext, { ServerSettings } from "./../../server-settings";

@@ -3,6 +3,7 @@
         "experimentalDecorators": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
+        "noImplicitUseStrict": true,
         "jsx": "react",
         "target": "es5",
         "sourceMap": true,

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+//TODO: LINKS allow to sort table
+
 const useSortState = (items: any[]) => {
     const [currentOrder, setSortOrder] = useState("");
     const [currentSortedColumn, setCurrentSortedColumn] = useState("");

@@ -30,3 +30,4 @@ out/
 
 /src/ExtendedExternalLinks/ClientResources/external-links-widget.js
 /src/ExtendedExternalLinks/ClientResources/external-links-component.js
+/src/ExtendedExternalLinks/ClientResources/initializer.js

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { DataItem } from "../../../definitions";
-import { useSortState } from "../../../table-sort";
 import NoData from "../no-data/no-data";
 import ActionLink from "../action-link/action-link";
+import { useSortState } from "../../../utils/table-sort";
 
 interface ItemsListProps {
     items: DataItem[];

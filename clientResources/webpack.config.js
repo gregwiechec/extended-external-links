@@ -2,7 +2,8 @@ const path = require("path");
 const config = {
     entry: {
         "external-links-widget": "./src/components/external-links-view/external-links-widget-wrapper.tsx",
-        "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx"
+        "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx",
+        "initializer": "./src/module-initializer.ts"
     },
     output: {
         filename: "[name].js",
@@ -69,6 +70,8 @@ const config = {
         "dojo/topic",
         "dijit/_WidgetBase",
         "dijit/Destroyable",
+        "epi/_Module",
+        "epi/dependency",
         "epi-cms/ApplicationSettings",
         "epi-cms/_ContentContextMixin",
         "epi/shell/command/_WidgetCommandProviderMixin", //TODO: LINKS add module methods to definitions
