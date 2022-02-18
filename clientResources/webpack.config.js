@@ -1,7 +1,7 @@
 const path = require("path");
 const config = {
     entry: {
-        "external-links-widget": "./src/components/external-links-view/external-links-widget-wrapper.tsx",
+        "external-links-view": "./src/components/external-links-view/external-links-view-wrapper.tsx",
         "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx",
         "initializer": "./src/module-initializer.ts"
     },
@@ -11,7 +11,7 @@ const config = {
         libraryExport: "default",
         path: path.resolve(__dirname, "../src/ExtendedExternalLinks/ClientResources")
     },
-    /*optimization: {
+    /*optimization: {  //TODO: LINKS why it's not working
         splitChunks: {
             chunks: 'all',
             name() {
@@ -66,14 +66,17 @@ const config = {
     },
     plugins: [],
     externals: [
-        "dojo/_base/declare",
+        "dojo/_base/declare", //TODO: LINKS remove all unused external dependencies
+        "dojo/Stateful",
         "dojo/topic",
         "dijit/_WidgetBase",
         "dijit/Destroyable",
+        "dijit/layout/_LayoutWidget",
         "epi/_Module",
         "epi/dependency",
         "epi-cms/ApplicationSettings",
         "epi-cms/_ContentContextMixin",
+        "epi-cms/content-approval/command/CancelChanges",
         "epi/shell/command/_WidgetCommandProviderMixin", //TODO: LINKS add module methods to definitions
         "epi/shell/command/_Command" //TODO: LINKS do not use this dependency
     ]

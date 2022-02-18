@@ -44,3 +44,8 @@ declare module "dijit/Destroyable" {
     const Destroyable: dijit.Destroyable;
     export = Destroyable;
 }
+
+declare module "dijit/layout/_LayoutWidget" {
+    const _LayoutWidget: any; //TODO: LINKS copy definition
+    export = _LayoutWidget;
+}

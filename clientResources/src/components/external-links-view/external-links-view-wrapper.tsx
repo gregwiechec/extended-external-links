@@ -1,4 +1,3 @@
-//TODO: LINKS all code related with view should be in this file
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
@@ -8,9 +7,16 @@ import { ExternalLinksView } from "./external-links-view";
 import changeContext from "../../utils/change-context";
 // external imports
 import declare from "dojo/_base/declare";
-import WidgetBase from "dijit/_WidgetBase";
+import Stateful from "dojo/Stateful";
+import _LayoutWidget from "dijit/layout/_LayoutWidget";
+import CancelChanges from "epi-cms/content-approval/command/CancelChanges";
 
-export default declare([WidgetBase], {
+//TODO: LINKS try to remove declare
+const Model = declare([Stateful], {
+    isDirty: false
+});
+
+export default declare([_LayoutWidget], {
     class: "external-links-view-container",
 
     postCreate: function () {
@@ -23,11 +29,15 @@ export default declare([WidgetBase], {
             dataService: defaultDataService
         };
 
+        const model = new Model();
+        //TODO: LINKS own command
+        const command = new CancelChanges({ model: model, order: 20 });
+
         const self = this;
         ReactDOM.render(
             <React.StrictMode>
                 <ServerSettingsContext.Provider value={settings}>
-                    <ExternalLinksView onContentClick={changeContext(self)} />
+                    <ExternalLinksView onContentClick={changeContext(self)} closeCommand={command} />
                 </ServerSettingsContext.Provider>
             </React.StrictMode>,
             this.domNode

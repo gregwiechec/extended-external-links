@@ -11,10 +11,15 @@ interface ComponentProps extends ServerSettings {
 }
 
 const Component = (settings: ComponentProps) => {
+    const closeCommand = {
+        label: "Close",
+        execute: () => alert("close")
+    };
+
     return (
         <ServerSettingsContext.Provider value={settings}>
             <div className="external-links-container">
-                <ExternalLinksView onContentClick={settings.onContentClick} />
+                <ExternalLinksView onContentClick={settings.onContentClick} closeCommand={closeCommand} />
             </div>
         </ServerSettingsContext.Provider>
     );
