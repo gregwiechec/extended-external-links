@@ -1,16 +1,19 @@
-import declare from "dojo/_base/declare";
-import _Command from "epi/shell/command/_Command";
-import topic from "dojo/topic";
+import { React_Command } from "./React_Command";
 
-export default declare([_Command], {
-    label: "Refresh list", //TODO: LINKS resources
-    category: "context",
-    iconClass: "epi-iconRevert epi-icon--medium",
+class RefreshCommand extends React_Command {
+    label: string = "Refresh list"; //TODO: LINKS resources
+    category: string = "context";
+    iconClass: string = "epi-iconRevert epi-icon--medium";
+    private _topic: dojo.Topic;
 
-    canExecute: true,
-    isActive: true,
-
-    _execute: () => {
-        topic.publish("/external-links/reload");
+    constructor(topic: dojo.Topic) {
+        super();
+        this._topic = topic;
     }
-});
+
+    execute() {
+        this._topic.publish("/external-links/reload");
+    }
+}
+
+export { RefreshCommand };

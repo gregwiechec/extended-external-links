@@ -5,9 +5,9 @@ import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
 import changeContext from "./../../utils/change-context";
 import { ExternalLinksListComponent } from "./external-links-component";
-import ShowViewCommand from "./show-view-command";
-import RefreshCommand from "./refresh-command";
-import ExportCommand from "./export-command";
+import { ShowViewCommand } from "./show-view-command";
+import { RefreshCommand } from "./refresh-command";
+import { ExportCommand } from "./export-command";
 // external imports
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
@@ -15,6 +15,9 @@ import WidgetBase from "dijit/_WidgetBase";
 import Destroyable from "dijit/Destroyable";
 import _WidgetCommandProviderMixin from "epi/shell/command/_WidgetCommandProviderMixin";
 
+/**
+ * Component is used to display component in Edit Mode
+ */
 export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
     //TODO: use common mixin for widget and component
     class: "external-links-component-container",
@@ -33,8 +36,8 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
 
         const self = this;
 
-        this.add("commands", new ShowViewCommand()); //TODO: LINKS try to conver command to classes
-        this.add("commands", new RefreshCommand());
+        this.add("commands", new ShowViewCommand(topic));
+        this.add("commands", new RefreshCommand(topic));
         this.add("commands", new ExportCommand());
 
         ReactDOM.render(

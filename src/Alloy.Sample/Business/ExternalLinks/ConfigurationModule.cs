@@ -67,16 +67,13 @@ namespace Alloy.Sample.Business.ExternalLinks
         public IEnumerable<LinkCommonData> GetAggregatedItems(IPrincipal user)
         {
             var random = new Random((int) DateTime.Now.Ticks);
-            var contents = _contentLoader.GetDescendents(ContentReference.StartPage);
-            foreach (var contentReference in contents)
+            for (var i = 0; i < 100; i++)
             {
-                var content = _contentLoader.Get<IContent>(contentReference);
-
                 foreach (var externalLink in _externalLinks)
                 {
                     yield return new LinkCommonData
                     {
-                        ExternalLink = externalLink,
+                        ExternalLink = i == 0 ? externalLink : externalLink + i,
                         Count = random.Next(100)
                     };
                 }

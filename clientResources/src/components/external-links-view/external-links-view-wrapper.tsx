@@ -16,6 +16,9 @@ const Model = declare([Stateful], {
     isDirty: false
 });
 
+/**
+ * External links view is used to display custom view in Edit Mode
+ */
 export default declare([_LayoutWidget], {
     class: "external-links-view-container",
 
