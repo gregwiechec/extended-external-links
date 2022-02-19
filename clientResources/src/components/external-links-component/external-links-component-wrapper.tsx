@@ -5,9 +5,7 @@ import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
 import changeContext from "./../../utils/change-context";
 import { ExternalLinksListComponent } from "./external-links-component";
-import { ShowViewCommand } from "./show-view-command";
-import { RefreshCommand } from "./refresh-command";
-import { ExportCommand } from "./export-command";
+import { ExportCommand, RefreshCommand, ShowViewCommand } from "./commands";
 // external imports
 import declare from "dojo/_base/declare";
 import topic from "dojo/topic";
@@ -53,3 +51,4 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
         ReactDOM.unmountComponentAtNode(this.domNode);
     }
 });
+//TODO: component should support only default view
