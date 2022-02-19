@@ -2,10 +2,10 @@ import { useState } from "react";
 
 //TODO: LINKS allow to sort table
 
-export const useSortState = (items: any[]) => {
+export const useSortState = <T>(items: T[]) => {
     const [currentOrder, setSortOrder] = useState("");
     const [currentSortedColumn, setCurrentSortedColumn] = useState("");
-    const [tableData, setTableData] = useState(items || []);
+    const [tableData, setTableData] = useState<T[]>(items || []);
 
     const sortData = (columnName: string) => {
         const sortToggleMap: any = {

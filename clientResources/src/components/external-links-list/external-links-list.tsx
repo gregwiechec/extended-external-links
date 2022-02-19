@@ -1,7 +1,7 @@
 import React from "react";
 import { AggregatedDataItem, DataItem } from "../../definitions";
 import AggregatedItemsList from "./aggregated-items-list/aggregated-items-list";
-import DetailedItemsList from "./detailed-items-list/detailed-items-list";
+import { DetailedItemsList } from "./detailed-items-list/detailed-items-list";
 import { useResourcesContext } from "../../resources-context";
 import "./external-links-list.scss";
 
@@ -11,6 +11,7 @@ interface FilterableExternalLinksListProps {
     aggregatedItems: AggregatedDataItem[];
     onShowDetailsChanged: (showDetails: boolean) => void;
     onContentClick: (item: DataItem) => void;
+    showExtraColumns?: boolean;
 }
 
 // searchable list of external links
@@ -19,7 +20,8 @@ export const FilterableExternalLinksList = ({
     detailedItems,
     aggregatedItems,
     onShowDetailsChanged,
-    onContentClick
+    onContentClick,
+    showExtraColumns = false
 }: FilterableExternalLinksListProps) => {
     const resources = useResourcesContext();
 
@@ -36,7 +38,11 @@ export const FilterableExternalLinksList = ({
                 </label>
             </div>
             {showDetails ? (
-                <DetailedItemsList items={detailedItems} onContentClick={onContentClick} />
+                <DetailedItemsList
+                    items={detailedItems}
+                    onContentClick={onContentClick}
+                    showExtraColumns={showExtraColumns}
+                />
             ) : (
                 <AggregatedItemsList items={aggregatedItems} />
             )}

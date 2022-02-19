@@ -13,6 +13,8 @@ export interface Resources {
         "content": string;
         "link": string;
         "page": string;
+        "contentlanguage": string;
+        "publishdate": string;
     };
     "showdetails": string;
     "showview": string;
@@ -32,7 +34,9 @@ const defaultResources: Resources = {
     "details": {
         "content": "Content",
         "link": "Web Address",
-        "page": "Page"
+        "page": "Page",
+        "contentlanguage": "Language",
+        "publishdate": "Publish date"
     },
     "showdetails": "Show details",
     "showview": "Show view",

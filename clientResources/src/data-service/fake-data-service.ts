@@ -36,7 +36,9 @@ export const getDetailedItems = (numberOfItems = 10): DataItem[] => {
         result.push({
             externalLink: externalURLs[i % externalURLs.length],
             contentName: contentNames[i % contentNames.length],
-            contentLink: (i % contentNames.length).toString()
+            contentLink: (i % contentNames.length).toString(),
+            language: "en",
+            publishDate: "2021-01-01"
         });
     }
     return result;

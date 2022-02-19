@@ -107,6 +107,13 @@ a.external-links-button {
         max-width: 100%;
         height: calc(100% - 100px);
 
+        &.extra-columns {
+            th,
+            td {
+                width: 25%;
+            }
+        }
+
         tbody {
             height: 100%;
             max-height: calc(100% - 20px);

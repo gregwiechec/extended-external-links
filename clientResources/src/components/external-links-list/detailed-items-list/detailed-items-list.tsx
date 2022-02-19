@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import classnames from "classnames";
 import { DataItem } from "../../../definitions";
 import { NoData } from "../no-data/no-data";
 import { ActionLink } from "../action-link/action-link";
@@ -8,10 +9,11 @@ import { useResourcesContext } from "../../../resources-context";
 interface ItemsListProps {
     items: DataItem[];
     onContentClick: (item: DataItem) => void;
+    showExtraColumns?: boolean;
 }
 
-const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
-    const sortState = useSortState(items);
+export const DetailedItemsList = ({ items, onContentClick, showExtraColumns = false }: ItemsListProps) => {
+    const sortState = useSortState<DataItem>(items);
     const resources = useResourcesContext();
 
     useEffect(() => {
@@ -29,11 +31,17 @@ const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
     };
 
     return (
-        <table className="external-links-table">
+        <table className={classnames("external-links-table", { "extra-columns": showExtraColumns })}>
             <thead>
                 <tr>
                     <th>{resources.details.link}</th>
                     <th>{resources.details.content}</th>
+                    {showExtraColumns && (
+                        <>
+                            <th>{resources.details.contentlanguage}</th>
+                            <th>{resources.details.publishdate}</th>
+                        </>
+                    )}
                 </tr>
             </thead>
             <tbody>
@@ -49,12 +57,15 @@ const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
                                 {x.contentName}
                             </ActionLink>
                         </td>
+                        {showExtraColumns && (
+                            <>
+                                <td>{x.language}</td>
+                                <td>{x.publishDate}</td>
+                            </>
+                        )}
                     </tr>
                 ))}
             </tbody>
         </table>
     );
 };
-
-export default DetailedItemsList;
-//TODO: LINKS for view it should show more columns like page created

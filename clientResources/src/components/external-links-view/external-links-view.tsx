@@ -33,6 +33,7 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                     aggregatedItems={aggregatedItems}
                     onShowDetailsChanged={setShowDetails}
                     onContentClick={onContentClick}
+                    showExtraColumns
                 />
                 <div>
                     <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>

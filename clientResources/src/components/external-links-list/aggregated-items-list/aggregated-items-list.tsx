@@ -10,7 +10,7 @@ interface ItemsListProps {
 }
 
 const AggregatedItemsList = ({ items }: ItemsListProps) => {
-    const sortState = useSortState(items);
+    const sortState = useSortState<AggregatedDataItem>(items);
     const resources = useResourcesContext();
 
     useEffect(() => {

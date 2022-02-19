@@ -1,5 +1,5 @@
 module.exports = async ({config}) => {
-    const webpackCommon = require("../webpack.config.common")(config, {});
+    const webpackCommon = require("../webpack.config")(config, {});
 
     config.module.rules = [
         ...(config.resolve.rules || []),

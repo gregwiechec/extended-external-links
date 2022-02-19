@@ -2,6 +2,8 @@ export type DataItem = {
     externalLink: string;
     contentName: string;
     contentLink: string;
+    language: string;
+    publishDate: string;
 };
 
 export type AggregatedDataItem = {
