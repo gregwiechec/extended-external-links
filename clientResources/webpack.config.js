@@ -72,13 +72,9 @@ const config = {
         "dijit/_WidgetBase",
         "dijit/Destroyable",
         "dijit/layout/_LayoutWidget",
-        "epi/_Module",
         "epi/dependency",
-        "epi-cms/ApplicationSettings",
-        "epi-cms/_ContentContextMixin",
         "epi-cms/content-approval/command/CancelChanges",
-        "epi/shell/command/_WidgetCommandProviderMixin", //TODO: LINKS add module methods to definitions
-        "epi/shell/command/_Command" //TODO: LINKS do not use this dependency
+        "epi/shell/command/_WidgetCommandProviderMixin"
     ]
 };
 

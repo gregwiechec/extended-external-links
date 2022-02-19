@@ -44,3 +44,5 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
 };
 
 export default AggregatedItemsList;
+//TODO: LINKS aggregated view allow to show details
+//TODO: LINKS update all dependencies
