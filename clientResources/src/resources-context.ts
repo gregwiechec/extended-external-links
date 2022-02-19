@@ -18,7 +18,7 @@ export interface Resources {
     "showview": string;
     "refresh": string;
     "export": string;
-};
+}
 
 const defaultResources: Resources = {
     "component": {

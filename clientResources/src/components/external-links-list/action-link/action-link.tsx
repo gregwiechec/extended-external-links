@@ -6,7 +6,7 @@ interface ActionLinkProps {
     href: string;
 }
 
-const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href, onClick, children }) => {
+export const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href, onClick, children }) => {
     let props: any = null;
     if (newWindow || onClick) {
         props = {};
@@ -23,5 +23,3 @@ const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href, onClic
         </a>
     );
 };
-
-export default ActionLink;

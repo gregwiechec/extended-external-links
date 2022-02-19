@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { AggregatedDataItem } from "../../../definitions";
-import NoData from "../no-data/no-data";
-import ActionLink from "../action-link/action-link";
+import { NoData } from "../no-data/no-data";
+import { ActionLink } from "../action-link/action-link";
 import { useSortState } from "../../../utils/table-sort";
 import { useResourcesContext } from "../../../resources-context";
 

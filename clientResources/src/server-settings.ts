@@ -12,7 +12,7 @@ const defaultSettings: ServerSettings = {
 
 const ServerSettingsContext = createContext<ServerSettings>(defaultSettings);
 
-export default ServerSettingsContext;
+export { ServerSettingsContext };
 
 export const useServerSettingsContext = (): ServerSettings => {
     const serverSettingsContext = useContext(ServerSettingsContext);

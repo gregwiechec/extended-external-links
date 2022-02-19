@@ -1,6 +1,6 @@
 import React from "react";
 
-const NoData = () => {
+export const NoData = () => {
     return (
         <div className="external-links-no-data">
             <h3>No data</h3>
@@ -8,5 +8,3 @@ const NoData = () => {
         </div>
     );
 };
-
-export default NoData;

@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { fakeDataService } from "../../data-service/fake-data-service";
-import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
+import { ServerSettingsContext, ServerSettings } from "./../../server-settings";
 import { DataItem, DataService } from "../../definitions";
 import { ExternalLinksView } from "./external-links-view";
 
