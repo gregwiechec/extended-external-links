@@ -17,6 +17,9 @@
         <page>Page</page>
       </details>
       <showdetails>Show details</showdetails>
+      <showview>Show view</showview>
+      <refresh>Refresh</refresh>
+      <export>Export</export>
     </externallinks>
   </language>
 </languages>

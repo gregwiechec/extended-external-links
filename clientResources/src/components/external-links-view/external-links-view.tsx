@@ -3,6 +3,7 @@ import { AggregatedDataItem, DataItem } from "../../definitions";
 import { useServerSettingsContext } from "../../server-settings";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { CommandButton } from "../external-links-list/command-button/comand-button";
+import { useResourcesContext } from "../../resources-context";
 
 interface ExternalLinksViewProps {
     onContentClick: (item: DataItem) => void;
@@ -14,6 +15,8 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
     const [showDetails, setShowDetails] = useState(false);
     const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
     const [aggregatedItems, setAggregatedItems] = useState<AggregatedDataItem[]>([]);
+
+    const resources = useResourcesContext();
 
     useEffect(() => {
         onRefresh(null);
@@ -41,7 +44,7 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
             </div>
             <div className="epi-content-approval__container">
                 <hgroup className="epi-heading-group">
-                    <h2 className="epi-heading">External links</h2>
+                    <h2 className="epi-heading">{resources.component.title}</h2>
                 </hgroup>
                 <FilterableExternalLinksList
                     showDetails={showDetails}
@@ -52,10 +55,10 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                 />
                 <div>
                     <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>
-                        Refresh
+                        {resources.refresh}
                     </button>
                     <a className="external-links-button" href="/ExternalLinks/export">
-                        Export
+                        {resources.export}
                     </a>
                 </div>
             </div>
