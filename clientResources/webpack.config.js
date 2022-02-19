@@ -66,7 +66,7 @@ const config = {
     },
     plugins: [],
     externals: [
-        "dojo/_base/declare", //TODO: LINKS remove all unused external dependencies
+        "dojo/_base/declare",
         "dojo/Stateful",
         "dojo/topic",
         "dijit/_WidgetBase",

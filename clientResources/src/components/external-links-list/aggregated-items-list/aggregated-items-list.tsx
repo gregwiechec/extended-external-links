@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { AggregatedDataItem } from "../../../definitions";
 import { NoData } from "../no-data/no-data";
 import { ActionLink } from "../action-link/action-link";
-import { useSortState } from "../../../utils/table-sort";
+import { useSortState } from "../../../hooks";
 import { useResourcesContext } from "../../../resources-context";
 
 interface ItemsListProps {

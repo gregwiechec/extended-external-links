@@ -2,7 +2,6 @@ import { React_Command } from "./React_Command";
 import { Resources } from "../../../resources-context";
 
 class ExportCommand extends React_Command {
-    //TODO: LINKS move to commands
     label: string = "Export";
     category: string = "context";
     iconClass: string = "epi-iconDownload epi-icon--medium";

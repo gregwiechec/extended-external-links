@@ -2,7 +2,7 @@ import { useState } from "react";
 
 //TODO: LINKS allow to sort table
 
-const useSortState = (items: any[]) => {
+export const useSortState = (items: any[]) => {
     const [currentOrder, setSortOrder] = useState("");
     const [currentSortedColumn, setCurrentSortedColumn] = useState("");
     const [tableData, setTableData] = useState(items || []);
@@ -42,5 +42,3 @@ const useSortState = (items: any[]) => {
         tableData: tableData
     };
 };
-
-export { useSortState };
