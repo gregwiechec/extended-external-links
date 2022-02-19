@@ -58,7 +58,9 @@ namespace Alloy.Sample.Business.ExternalLinks
                         ContentLink = content.ContentLink,
                         ContentName = content.Name,
                         ContentUrl = "",
-                        ExternalLink = externalLink
+                        ExternalLink = externalLink,
+                        Language = "en",
+                        PublishDate = (content as IChangeTrackable)?.Changed.ToString("yyyy-MM-dd")
                     };
                 }
             }

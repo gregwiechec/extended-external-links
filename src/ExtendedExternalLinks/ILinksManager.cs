@@ -70,12 +70,14 @@ namespace ExtendedExternalLinks
         private IEnumerable<LinkDetailsData> GetDetailsList(IEnumerable<UrlContentReferencePair> source)
         {
             var temp = source.Select(item => new
-                {Url = item.Url.ToString(), Content = GetContent(item.ContentReference)});
+                {Url = item.Url.ToString(), item.Language, Content = GetContent(item.ContentReference)});
             var items = temp.Select(item => new LinkDetailsData
             {
                 ExternalLink = item.Url, ContentName = item.Content.Name,
                 ContentLink = item.Content.ContentLink,
-                ContentUrl = PageEditing.GetEditUrl(item.Content.ContentLink)
+                ContentUrl = PageEditing.GetEditUrl(item.Content.ContentLink),
+                Language = item.Language,
+                PublishDate = (item.Content as IChangeTrackable)?.Changed.ToString("yyyy-MM-dd")
             });
             return items.OrderBy(item => item.ExternalLink);
         }
@@ -114,7 +116,8 @@ namespace ExtendedExternalLinks
                     links.Add(new UrlContentReferencePair
                     {
                         ContentReference = content.ContentLink,
-                        Url = new Url(uri)
+                        Url = new Url(uri),
+                        Language = softLink.ReferencedLanguage.Name
                     });
                 }
             }
@@ -146,11 +149,14 @@ namespace ExtendedExternalLinks
         public string ContentName { get; set; }
         public string ContentUrl { get; set; }
         public string ExternalLink { get; set; }
+        public string Language { get; set; }
+        public string PublishDate { get; set; }
     }
 
     public class UrlContentReferencePair
     {
         public ContentReference ContentReference { get; set; }
         public Url Url { get; set; }
+        public string Language { get; set; }
     }
 }
