@@ -3,6 +3,7 @@ import { DataItem } from "../../../definitions";
 import NoData from "../no-data/no-data";
 import ActionLink from "../action-link/action-link";
 import { useSortState } from "../../../utils/table-sort";
+import { useResourcesContext } from "../../../resources-context";
 
 interface ItemsListProps {
     items: DataItem[];
@@ -11,6 +12,7 @@ interface ItemsListProps {
 
 const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
     const sortState = useSortState(items);
+    const resources = useResourcesContext();
 
     useEffect(() => {
         sortState.updateData(items);
@@ -30,22 +32,22 @@ const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
         <table className="external-links-table">
             <thead>
                 <tr>
-                    <th>
-                        Web address
-                    </th>
-                    <th>
-                        Content
-                    </th>
+                    <th>{resources.details.link}</th>
+                    <th>{resources.details.content}</th>
                 </tr>
             </thead>
             <tbody>
                 {sortState.tableData.map((x, index) => (
                     <tr key={index}>
                         <td>
-                            <ActionLink href={x.externalLink} newWindow>{x.externalLink}</ActionLink>
+                            <ActionLink href={x.externalLink} newWindow>
+                                {x.externalLink}
+                            </ActionLink>
                         </td>
                         <td>
-                            <ActionLink href="#" onClick={e => onContentItemClicked(e, x)}>{x.contentName}</ActionLink>
+                            <ActionLink href="#" onClick={(e) => onContentItemClicked(e, x)}>
+                                {x.contentName}
+                            </ActionLink>
                         </td>
                     </tr>
                 ))}
@@ -55,4 +57,4 @@ const DetailedItemsList = ({ items, onContentClick }: ItemsListProps) => {
 };
 
 export default DetailedItemsList;
-//TODO: LINKS add resources
+//TODO: LINKS for view it should show more columns like page created

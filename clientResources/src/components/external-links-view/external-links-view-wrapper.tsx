@@ -5,11 +5,13 @@ import ServerSettingsContext, { ServerSettings } from "./../../server-settings";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
 import { ExternalLinksView } from "./external-links-view";
 import changeContext from "../../utils/change-context";
+import { ResourcesContext } from "../../resources-context";
 // external imports
 import declare from "dojo/_base/declare";
 import Stateful from "dojo/Stateful";
 import _LayoutWidget from "dijit/layout/_LayoutWidget";
 import CancelChanges from "epi-cms/content-approval/command/CancelChanges";
+import resources from "epi/i18n!epi/cms/nls/externallinks";
 
 //TODO: LINKS try to remove declare
 const Model = declare([Stateful], {
@@ -39,9 +41,11 @@ export default declare([_LayoutWidget], {
         const self = this;
         ReactDOM.render(
             <React.StrictMode>
-                <ServerSettingsContext.Provider value={settings}>
-                    <ExternalLinksView onContentClick={changeContext(self)} closeCommand={command} />
-                </ServerSettingsContext.Provider>
+                <ResourcesContext.Provider value={resources}>
+                    <ServerSettingsContext.Provider value={settings}>
+                        <ExternalLinksView onContentClick={changeContext(self)} closeCommand={command} />
+                    </ServerSettingsContext.Provider>
+                </ResourcesContext.Provider>
             </React.StrictMode>,
             this.domNode
         );

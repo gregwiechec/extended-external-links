@@ -74,7 +74,8 @@ const config = {
         "dijit/layout/_LayoutWidget",
         "epi/dependency",
         "epi-cms/content-approval/command/CancelChanges",
-        "epi/shell/command/_WidgetCommandProviderMixin"
+        "epi/shell/command/_WidgetCommandProviderMixin",
+        "epi/i18n!epi/cms/nls/externallinks"
     ]
 };
 
