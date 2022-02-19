@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { AggregatedDataItem, DataItem } from "../../definitions";
-import { useServerSettingsContext } from "../../server-settings";
+import React from "react";
+import { DataItem } from "../../definitions";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { CommandButton } from "../external-links-list/command-button/comand-button";
 import { useResourcesContext } from "../../resources-context";
+import { useManageList } from "../../hooks";
 
 interface ExternalLinksViewProps {
     onContentClick: (item: DataItem) => void;
@@ -11,27 +11,8 @@ interface ExternalLinksViewProps {
 }
 
 export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLinksViewProps) => {
-    const serverSettings = useServerSettingsContext();
-    const [showDetails, setShowDetails] = useState(false);
-    const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
-    const [aggregatedItems, setAggregatedItems] = useState<AggregatedDataItem[]>([]);
-
     const resources = useResourcesContext();
-
-    useEffect(() => {
-        onRefresh(null);
-    }, [showDetails]);
-
-    const onRefresh = (e: any = null) => {
-        if (e) {
-            e.preventDefault();
-        }
-        if (showDetails) {
-            serverSettings.dataService.loadItems().then((result) => setDetailedItems(result));
-        } else {
-            serverSettings.dataService.loadAggregatedItems().then((result) => setAggregatedItems(result));
-        }
-    };
+    const { showDetails, detailedItems, aggregatedItems, onRefresh, setShowDetails } = useManageList();
 
     return (
         <>
@@ -50,7 +31,7 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                     showDetails={showDetails}
                     detailedItems={detailedItems}
                     aggregatedItems={aggregatedItems}
-                    onShowDetailsChanged={(value) => setShowDetails(value)}
+                    onShowDetailsChanged={setShowDetails}
                     onContentClick={onContentClick}
                 />
                 <div>
