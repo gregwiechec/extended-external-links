@@ -1,20 +1,23 @@
 import { createContext, useContext } from "react";
 
-export type Resources = {
+export interface Resources {
     "component": {
-        "description": string,
-        "title": string
-    },
+        "description": string;
+        "title": string;
+    };
     "common": {
-        "hits": string,
-        "host": string
-    },
+        "hits": string;
+        "host": string;
+    };
     "details": {
-        "content": string,
-        "link": string,
-        "page": string
-    },
-    "showdetails": string
+        "content": string;
+        "link": string;
+        "page": string;
+    };
+    "showdetails": string;
+    "showview": string;
+    "refresh": string;
+    "export": string;
 };
 
 const defaultResources: Resources = {
@@ -31,7 +34,10 @@ const defaultResources: Resources = {
         "link": "Web Address",
         "page": "Page"
     },
-    "showdetails": "Show details"
+    "showdetails": "Show details",
+    "showview": "Show view",
+    "refresh": "Refresh",
+    "export": "Export"
 };
 
 const ResourcesContext = createContext<Resources>(defaultResources);

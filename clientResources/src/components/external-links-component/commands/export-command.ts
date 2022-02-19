@@ -1,9 +1,16 @@
 import { React_Command } from "./React_Command";
+import { Resources } from "../../../resources-context";
 
-class ExportCommand extends React_Command { //TODO: LINKS move to commands
-    label: string = "Export"; //TODO: LINKS resources
+class ExportCommand extends React_Command {
+    //TODO: LINKS move to commands
+    label: string = "Export";
     category: string = "context";
     iconClass: string = "epi-iconDownload epi-icon--medium";
+
+    constructor(resources: Resources) {
+        super();
+        this.label = resources.export;
+    }
 
     execute() {
         const link = window.document.createElement("a");
@@ -14,4 +21,4 @@ class ExportCommand extends React_Command { //TODO: LINKS move to commands
     }
 }
 
-export { ExportCommand }
+export { ExportCommand };

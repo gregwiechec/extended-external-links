@@ -1,4 +1,5 @@
 import { React_Command } from "./React_Command";
+import { Resources } from "../../../resources-context";
 
 class ShowViewCommand extends React_Command {
     label: string = "Show view";
@@ -7,9 +8,10 @@ class ShowViewCommand extends React_Command {
 
     private _topic: dojo.Topic;
 
-    constructor(topic: dojo.Topic) {
+    constructor(topic: dojo.Topic, resources: Resources) {
         super();
         this._topic = topic;
+        this.label = resources.showview;
     }
 
     execute() {

@@ -3,6 +3,7 @@ import { AggregatedDataItem } from "../../../definitions";
 import NoData from "../no-data/no-data";
 import ActionLink from "../action-link/action-link";
 import { useSortState } from "../../../utils/table-sort";
+import { useResourcesContext } from "../../../resources-context";
 
 interface ItemsListProps {
     items: AggregatedDataItem[];
@@ -10,6 +11,7 @@ interface ItemsListProps {
 
 const AggregatedItemsList = ({ items }: ItemsListProps) => {
     const sortState = useSortState(items);
+    const resources = useResourcesContext();
 
     useEffect(() => {
         sortState.updateData(items);
@@ -23,8 +25,8 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
         <table className="external-links-table">
             <thead>
                 <tr>
-                    <th>Web address</th>
-                    <th>Number of contents</th>
+                    <th>{resources.common.host}</th>
+                    <th>{resources.common.hits}</th>
                 </tr>
             </thead>
             <tbody>

@@ -36,9 +36,9 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
 
         const self = this;
 
-        this.add("commands", new ShowViewCommand(topic));
-        this.add("commands", new RefreshCommand(topic));
-        this.add("commands", new ExportCommand());
+        this.add("commands", new ShowViewCommand(topic, resources));
+        this.add("commands", new RefreshCommand(topic, resources));
+        this.add("commands", new ExportCommand(resources));
 
         ReactDOM.render(
             <React.StrictMode>
@@ -56,3 +56,4 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
     }
 });
 //TODO: component should support only detailed
+//TODO: add lint
