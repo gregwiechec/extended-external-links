@@ -34,17 +34,29 @@ export const FilterableExternalLinksList = ({
     return (
         <>
             <div className="filters">
-                <input type="text" placeholder="External URL" value={externalUrl} onChange={e => onExternalUrlChanged(e.target.value)} />
-                {allowAggregatedView && (
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={showDetails}
-                            onChange={(x) => onShowDetailsChanged(x.target.checked)}
-                        />
-                        {resources.showdetails}
-                    </label>
-                )}
+                <div className="epi-gadgetInnerToolbar">
+                    <div className="dijit dijitReset dijitInline dijitLeft dijitTextBox epi-searchInput epi-contentSearchBox">
+                        <div className="dijitReset dijitInputField dijitInputContainer">
+                            <input
+                                className="dijitReset dijitInputInner dijitDownArrowButton"
+                                type="text"
+                                placeholder="External URL"
+                                value={externalUrl}
+                                onChange={(e) => onExternalUrlChanged(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    {allowAggregatedView && (
+                        <label className="show-details-filter">
+                            <input
+                                type="checkbox"
+                                checked={showDetails}
+                                onChange={(x) => onShowDetailsChanged(x.target.checked)}
+                            />
+                            {resources.showdetails}
+                        </label>
+                    )}
+                </div>
             </div>
             {showDetails ? (
                 <DetailedItemsList

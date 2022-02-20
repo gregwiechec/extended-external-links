@@ -1,21 +1,7 @@
 .external-links-component-container,
 .external-links-view-container {
     height: 100%;
-
-    .filters {
-        margin-top: 10px;
-
-        label {
-            input[type="checkbox"] {
-                margin: 2px 4px 0 0;
-                vertical-align: top;
-            }
-        }
-    }
-}
-
-.external-links-component-container {
-    padding-left: 16px;
+    background-color: #FFF;
 }
 
 @mixin external-link-button {
@@ -49,11 +35,11 @@ a.external-links-button {
 .external-links-view-container {
     .external-links-table {
         margin-bottom: 20px;
-        margin-top: 10px;
         width: 100%;
         max-width: 500px;
         border-spacing: 0;
         height: 100%;
+        padding-left: 8px;
 
         thead,
         tbody,
@@ -101,6 +87,10 @@ a.external-links-button {
 }
 
 .external-links-view-container {
+    .epi-localToolbar {
+        background-color: #f8f9f8;
+    }
+
     .epi-content-approval__container {
         overflow: hidden;
         height: 100%;
@@ -108,6 +98,7 @@ a.external-links-button {
 
     .external-links-table {
         max-width: 100%;
+        padding-left: 0;
         height: calc(100% - 100px);
 
         &.extra-columns {
@@ -120,6 +111,24 @@ a.external-links-button {
         tbody {
             height: 100%;
             max-height: calc(100% - 20px);
+        }
+    }
+
+    .show-details-filter {
+        padding-left: 8px;
+        line-height: 22px;
+        vertical-align: top;
+
+        input {
+            margin-right: 4px;
+        }
+    }
+
+    .epi-gadgetInnerToolbar {
+        padding-left: 0;
+
+        .dijitTextBox {
+            width: 300px;
         }
     }
 }
