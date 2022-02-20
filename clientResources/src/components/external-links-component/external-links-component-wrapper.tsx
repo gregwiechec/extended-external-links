@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { ServerSettingsContext, ServerSettings } from "./../../server-settings";
+import { ServerSettingsContext, ServerSettings } from "../../server-settings";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
-import { changeContext } from "./../../utils/change-context";
+import { changeContext } from "../../utils/change-context";
 import { ExternalLinksListComponent } from "./external-links-component";
 import { ExportCommand, RefreshCommand, ShowViewCommand } from "./commands";
 import { ResourcesContext } from "../../resources-context";

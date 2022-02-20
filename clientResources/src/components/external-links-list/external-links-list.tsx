@@ -7,35 +7,44 @@ import "./external-links-list.scss";
 
 interface FilterableExternalLinksListProps {
     showDetails: boolean;
+    externalUrl: string;
+    onExternalUrlChanged: (target: any) => void;
     detailedItems: DataItem[];
     aggregatedItems: AggregatedDataItem[];
     onShowDetailsChanged: (showDetails: boolean) => void;
     onContentClick: (item: DataItem) => void;
     showExtraColumns?: boolean;
+    allowAggregatedView?: boolean;
 }
 
 // searchable list of external links
 export const FilterableExternalLinksList = ({
     showDetails,
+    externalUrl,
+    onExternalUrlChanged,
     detailedItems,
     aggregatedItems,
     onShowDetailsChanged,
     onContentClick,
-    showExtraColumns = false
+    showExtraColumns = false,
+    allowAggregatedView = true
 }: FilterableExternalLinksListProps) => {
     const resources = useResourcesContext();
 
     return (
         <>
             <div className="filters">
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={showDetails}
-                        onChange={(x) => onShowDetailsChanged(x.target.checked)}
-                    />
-                    {resources.showdetails}
-                </label>
+                <input type="text" placeholder="External URL" value={externalUrl} onChange={e => onExternalUrlChanged(e.target.value)} />
+                {allowAggregatedView && (
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={showDetails}
+                            onChange={(x) => onShowDetailsChanged(x.target.checked)}
+                        />
+                        {resources.showdetails}
+                    </label>
+                )}
             </div>
             {showDetails ? (
                 <DetailedItemsList

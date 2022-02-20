@@ -9,7 +9,15 @@ interface ExternalLinksListComponentProps {
 }
 
 export const ExternalLinksListComponent = ({ onContentClick, topic }: ExternalLinksListComponentProps) => {
-    const { showDetails, detailedItems, aggregatedItems, onRefresh, setShowDetails } = useManageList();
+    const {
+        showDetails,
+        filteredDetailedItems,
+        filteredAggregatedItems,
+        onRefresh,
+        setShowDetails,
+        externalUrl,
+        onExternalUrlChanged
+    } = useManageList(true);
 
     useEffect(() => {
         let handle = topic.subscribe("/external-links/reload", () => {
@@ -25,10 +33,13 @@ export const ExternalLinksListComponent = ({ onContentClick, topic }: ExternalLi
         <>
             <FilterableExternalLinksList
                 showDetails={showDetails}
-                detailedItems={detailedItems}
-                aggregatedItems={aggregatedItems}
+                externalUrl={externalUrl}
+                onExternalUrlChanged={onExternalUrlChanged}
+                detailedItems={filteredDetailedItems}
+                aggregatedItems={filteredAggregatedItems}
                 onShowDetailsChanged={setShowDetails}
                 onContentClick={onContentClick}
+                allowAggregatedView={false}
             />
         </>
     );

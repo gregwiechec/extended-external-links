@@ -22,7 +22,7 @@ export interface Resources {
     "export": string;
 }
 
-const defaultResources: Resources = {
+export const defaultResources: Resources = {
     "component": {
         "description": "Lists all external links used on the site",
         "title": "External links"

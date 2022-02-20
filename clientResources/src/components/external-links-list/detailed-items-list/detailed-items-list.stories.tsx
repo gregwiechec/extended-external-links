@@ -5,7 +5,7 @@ import { getDetailedItems } from "../../../data-service/fake-data-service";
 import "./../external-links-list.scss";
 
 export default {
-    title: "External links list/Details",
+    title: "Components/Details",
     component: DetailedItemsList
 } as ComponentMeta<typeof DetailedItemsList>;
 

@@ -1,6 +1,5 @@
 .external-links-component-container,
 .external-links-view-container {
-    padding: 0 0 50px 16px;
     height: 100%;
 
     .filters {
@@ -13,6 +12,10 @@
             }
         }
     }
+}
+
+.external-links-component-container {
+    padding-left: 16px;
 }
 
 @mixin external-link-button {
@@ -63,7 +66,7 @@ a.external-links-button {
         tbody {
             overflow-y: auto;
             overflow-x: hidden;
-            max-height: calc(100% - 20px);
+            max-height: calc(100% - 80px);
         }
 
         tr {

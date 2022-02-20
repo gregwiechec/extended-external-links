@@ -12,7 +12,7 @@ interface ExternalLinksViewProps {
 
 export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLinksViewProps) => {
     const resources = useResourcesContext();
-    const { showDetails, detailedItems, aggregatedItems, onRefresh, setShowDetails } = useManageList();
+    const { showDetails, filteredDetailedItems, filteredAggregatedItems, onRefresh, setShowDetails, externalUrl, onExternalUrlChanged } = useManageList();
 
     return (
         <>
@@ -29,8 +29,10 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                 </hgroup>
                 <FilterableExternalLinksList
                     showDetails={showDetails}
-                    detailedItems={detailedItems}
-                    aggregatedItems={aggregatedItems}
+                    externalUrl={externalUrl}
+                    onExternalUrlChanged={onExternalUrlChanged}
+                    detailedItems={filteredDetailedItems}
+                    aggregatedItems={filteredAggregatedItems}
                     onShowDetailsChanged={setShowDetails}
                     onContentClick={onContentClick}
                     showExtraColumns

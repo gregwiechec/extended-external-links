@@ -3,7 +3,8 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { fakeDataService } from "../../data-service/fake-data-service";
 import { ServerSettingsContext, ServerSettings } from "../../server-settings";
 import { DataItem, DataService } from "../../definitions";
-import { ExternalLinksView } from "./external-links-view";
+import { ExternalLinksListComponent } from "./external-links-component";
+import { ResourcesContext, defaultResources } from "../../resources-context";
 
 interface ComponentProps extends ServerSettings {
     dataService: DataService;
@@ -11,22 +12,30 @@ interface ComponentProps extends ServerSettings {
 }
 
 const Component = (settings: ComponentProps) => {
-    const closeCommand = {
-        label: "Close",
-        execute: () => alert("close")
+    const topic: dojo.Topic = {
+        subscribe(topic: string | dojo.ExtensionEvent, listener: EventListener | Function): dojo.Handle {
+            return {
+                remove: () => undefined
+            };
+        },
+        publish(topic: string | dojo.ExtensionEvent, ...event): boolean {
+            return true;
+        }
     };
 
     return (
-        <ServerSettingsContext.Provider value={settings}>
-            <div className="external-links-container">
-                <ExternalLinksView onContentClick={settings.onContentClick} closeCommand={closeCommand} />
-            </div>
-        </ServerSettingsContext.Provider>
+        <ResourcesContext.Provider value={defaultResources}>
+            <ServerSettingsContext.Provider value={settings}>
+                <div className="external-links-container">
+                    <ExternalLinksListComponent onContentClick={settings.onContentClick} topic={topic} />
+                </div>
+            </ServerSettingsContext.Provider>
+        </ResourcesContext.Provider>
     );
 };
 
 export default {
-    title: "External links view",
+    title: "External links component",
     component: Component
 } as ComponentMeta<typeof Component>;
 

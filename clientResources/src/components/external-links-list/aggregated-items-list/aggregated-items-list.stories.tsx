@@ -5,7 +5,7 @@ import { getAggregatedItems } from "../../../data-service/fake-data-service";
 import "./../external-links-list.scss";
 
 export default {
-    title: "External links list/Aggregated",
+    title: "Components/Aggregated",
     component: AggregatedItemsList
 } as ComponentMeta<typeof AggregatedItemsList>;
 
