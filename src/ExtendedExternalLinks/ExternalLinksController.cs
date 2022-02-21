@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using EPiServer.Security;
 using EPiServer.Shell.Services.Rest;
 using Microsoft.AspNetCore.Authorization;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Principal;
 using EPiServer;
 using EPiServer.Core;
@@ -9,16 +10,11 @@ using EPiServer.Editor;
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
 
+[assembly: InternalsVisibleTo("ExtendedExternalLinks.Tests")]
 namespace ExtendedExternalLinks
 {
-    public interface ILinksManager
-    {
-        IEnumerable<LinkDetailsData> GetItems(IPrincipal user);
-        IEnumerable<LinkCommonData> GetAggregatedItems(IPrincipal user);
-    }
-
     [ServiceConfiguration(typeof(ILinksManager))]
-    public class LinksManager : ILinksManager
+    internal class LinksManager : ILinksManager
     {
         private readonly IContentLoader _contentLoader;
         private readonly IContentSoftLinkRepository _softLinkRepository;
@@ -58,8 +54,7 @@ namespace ExtendedExternalLinks
 
         private IContent GetContent(ContentReference reference)
         {
-            IContent content;
-            if (_contentLoader.TryGet<IContent>(reference, out content))
+            if (_contentLoader.TryGet<IContent>(reference, out var content))
             {
                 return content;
             }
@@ -85,9 +80,9 @@ namespace ExtendedExternalLinks
             var softLinks = _softLinkRepository.Load("http", false);
 
             var links = new List<UrlContentReferencePair>();
-            Uri uri = null;
             foreach (var softLink in softLinks)
             {
+                Uri uri;
                 try
                 {
                     uri = new Uri(softLink.Url);
@@ -98,7 +93,7 @@ namespace ExtendedExternalLinks
                     continue;
                 }
 
-                IContent content = null;
+                IContent content;
                 try
                 {
                     content = _contentLoader.Get<IContent>(softLink.OwnerContentLink);
@@ -125,32 +120,13 @@ namespace ExtendedExternalLinks
         private bool IsAuthorized(IPrincipal user, ContentReference pageReference)
         {
             var page = GetContent(pageReference);
-            var securable = page as ISecurable;
-
-            return securable != null
-                ? securable.GetSecurityDescriptor().HasAccess(user, EPiServer.Security.AccessLevel.Read)
-                : true;
+            return !(page is ISecurable sec) || sec.GetSecurityDescriptor().HasAccess(user, AccessLevel.Read);
         }
-    }
 
-    public class LinkCommonData
-    {
-        public string Host { get; set; }
-        public string ExternalLink { get; set; }
-        public int Count { get; set; }
-    }
-
-    public class LinkDetailsData
-    {
-        public ContentReference ContentLink { get; set; }
-        public string ContentName { get; set; }
-        public string ContentUrl { get; set; }
-        public string ExternalLink { get; set; }
-    }
-
-    public class UrlContentReferencePair
-    {
-        public ContentReference ContentReference { get; set; }
-        public Url Url { get; set; }
+        public class UrlContentReferencePair
+        {
+            public ContentReference ContentReference { get; set; }
+            public Url Url { get; set; }
+        }
     }
 }

@@ -1,30 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alloy.Sample", "src\Alloy.Sample\Alloy.Sample.csproj", "{12F4D91E-D45A-4DD3-9DF0-E8483A24AA74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alloy.Sample", "src\Alloy.Sample\Alloy.Sample.csproj", "{12F4D91E-D45A-4DD3-9DF0-E8483A24AA74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedExternalLinks", "src\ExtendedExternalLinks\ExtendedExternalLinks.csproj", "{3AAC63BC-8916-4F19-9611-2463CF3C7DB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtendedExternalLinks", "src\ExtendedExternalLinks\ExtendedExternalLinks.csproj", "{3AAC63BC-8916-4F19-9611-2463CF3C7DB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A1272902-1CD0-4507-9714-CB3AE96E78FD}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		build.cmd = build.cmd
-		LICENSE = LICENSE
-		pack.cmd = pack.cmd
-		pack.ps1 = build\pack.ps1
-		README.md = README.md
-		setup.cmd = setup.cmd
-		build\common.props = build\common.props
-		build\version.props = build\version.props
-		build\dependencies.props = build\dependencies.props
-		build\nuspec.props = build\nuspec.props
-		.github\workflows\extended-external-links-dotnet-core.yml = .github\workflows\extended-external-links-dotnet-core.yml
-		NuGet.config = NuGet.config
-	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedExternalLinks.Tests", "ExtendedExternalLinks.Tests\ExtendedExternalLinks.Tests.csproj", "{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +25,10 @@ Global
 		{3AAC63BC-8916-4F19-9611-2463CF3C7DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AAC63BC-8916-4F19-9611-2463CF3C7DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AAC63BC-8916-4F19-9611-2463CF3C7DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
