@@ -9,6 +9,10 @@ export type DataItem = {
 export type AggregatedDataItem = {
     externalLink: string;
     count: number;
+    contents: {
+        contentName: string;
+        contentLink: string;
+    }[];
 };
 
 export type DataService = {

@@ -3,10 +3,10 @@ import React from "react";
 interface ActionLinkProps {
     newWindow?: boolean;
     onClick?: (e: any) => void;
-    href: string;
+    href?: string;
 }
 
-export const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href, onClick, children }) => {
+export const ActionLink: React.FC<ActionLinkProps> = ({ newWindow = false, href = "#", onClick, children }) => {
     let props: any = null;
     if (newWindow || onClick) {
         props = {};

@@ -8,7 +8,7 @@ import { useResourcesContext } from "../../../resources-context";
 
 interface ItemsListProps {
     items: DataItem[];
-    onContentClick: (item: DataItem) => void;
+    onContentClick: (contentLink: string) => void;
     showExtraColumns?: boolean;
 }
 
@@ -27,7 +27,7 @@ export const DetailedItemsList = ({ items, onContentClick, showExtraColumns = fa
 
     const onContentItemClicked = (e, item: DataItem) => {
         e.preventDefault();
-        onContentClick(item);
+        onContentClick(item.contentLink);
     };
 
     return (

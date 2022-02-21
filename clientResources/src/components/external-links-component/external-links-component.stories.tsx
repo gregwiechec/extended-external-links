@@ -8,7 +8,7 @@ import { ResourcesContext, defaultResources } from "../../resources-context";
 
 interface ComponentProps extends ServerSettings {
     dataService: DataService;
-    onContentClick: (item: DataItem) => void;
+    onContentClick: (contentLink: string) => void;
 }
 
 const Component = (settings: ComponentProps) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AggregatedItemsList from "./aggregated-items-list";
+import { action } from "@storybook/addon-actions";
+import { AggregatedItemsList } from "./aggregated-items-list";
 import { getAggregatedItems } from "../../../data-service/fake-data-service";
 import "./../external-links-list.scss";
 
@@ -9,7 +10,9 @@ export default {
     component: AggregatedItemsList
 } as ComponentMeta<typeof AggregatedItemsList>;
 
-const Template: ComponentStory<typeof AggregatedItemsList> = (args) => <AggregatedItemsList {...args} />;
+const Template: ComponentStory<typeof AggregatedItemsList> = (args) => (
+    <AggregatedItemsList onContentClick={action("onContentClick")} {...args} />
+);
 
 export const AggregatedItemListStory = Template.bind({});
 AggregatedItemListStory.args = {

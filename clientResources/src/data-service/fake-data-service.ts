@@ -19,7 +19,11 @@ const convertDetailedItems = (numberOfItems: number): AggregatedDataItem[] => {
         if (!aggregatedItem) {
             aggregatedItem = {
                 externalLink: x.externalLink,
-                count: 0
+                count: 0,
+                contents: [{
+                    contentName: "Start Page",
+                    contentLink: "1"
+                }]
             }
             result.push(aggregatedItem);
         }
@@ -49,7 +53,11 @@ export const getAggregatedItems = (numberOfItems = 10): AggregatedDataItem[] => 
     for (let i = 0; i < numberOfItems; i++) {
         const aggregatedItem: AggregatedDataItem = {
             externalLink: externalURLs[i % externalURLs.length] + (i < externalURLs.length ? "" : i),
-            count: (i + 1) * 5
+            count: (i + 1) * 5,
+            contents: [
+                { contentName: "Start Page", contentLink: "5" },
+                { contentName: "Alloy Plan", contentLink: "10" }
+            ]
         };
         result.push(aggregatedItem);
     }

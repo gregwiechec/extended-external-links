@@ -1,12 +1,11 @@
 import React from "react";
-import { DataItem } from "../../definitions";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { CommandButton } from "../external-links-list/command-button/comand-button";
 import { useResourcesContext } from "../../resources-context";
 import { useManageList } from "../../hooks";
 
 interface ExternalLinksViewProps {
-    onContentClick: (item: DataItem) => void;
+    onContentClick: (contentLink: string) => void;
     closeCommand: any;
 }
 

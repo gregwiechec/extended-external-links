@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import { DataItem } from "../../definitions";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { useManageList } from "../../hooks";
 
 interface ExternalLinksListComponentProps {
-    onContentClick: (item: DataItem) => void;
+    onContentClick: (contentLink: string) => void;
     topic: dojo.Topic;
 }
 

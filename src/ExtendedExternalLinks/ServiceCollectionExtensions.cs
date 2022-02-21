@@ -18,17 +18,6 @@ namespace ExtendedExternalLinks
                         pm.Items.Add(new ModuleDetails { Name = "extended-external-links", Assemblies = { typeof(ExternalLinksController).Assembly.GetName().Name }  });
                     }
                 });
-
-
-            /*
-            services.AddMvc().AddRazorRuntimeCompilation(options =>
-            {
-                options.FileProviders.Add(new EmbeddedFileProvider(
-                    typeof(ServiceCollectionExtensions).Assembly
-                ));
-            });
-            */
-
             return services;
         }
     }

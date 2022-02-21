@@ -7,9 +7,10 @@ import { useResourcesContext } from "../../../resources-context";
 
 interface ItemsListProps {
     items: AggregatedDataItem[];
+    onContentClick: (contentLink: string) => void;
 }
 
-const AggregatedItemsList = ({ items }: ItemsListProps) => {
+export const AggregatedItemsList = ({ items, onContentClick }: ItemsListProps) => {
     const sortState = useSortState<AggregatedDataItem>(items);
     const resources = useResourcesContext();
 
@@ -37,14 +38,21 @@ const AggregatedItemsList = ({ items }: ItemsListProps) => {
                                 {x.externalLink}
                             </ActionLink>
                         </td>
-                        <td>{x.count}</td>
+                        <td>
+                            <div>{x.count}</div>
+                            <ul>
+                                {(x.contents || []).map((content) => (
+                                    <li key={content.contentLink}>
+                                        <ActionLink onClick={() => onContentClick(content.contentLink)} newWindow>
+                                            {content.contentName}
+                                        </ActionLink>
+                                    </li>
+                                ))}
+                            </ul>
+                        </td>
                     </tr>
                 ))}
             </tbody>
         </table>
     );
 };
-
-export default AggregatedItemsList;
-//TODO: LINKS aggregated view allow to show details
-//TODO: LINKS update all dependencies

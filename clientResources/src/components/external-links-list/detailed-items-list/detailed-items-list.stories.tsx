@@ -9,7 +9,7 @@ export default {
     component: DetailedItemsList
 } as ComponentMeta<typeof DetailedItemsList>;
 
-const Template: ComponentStory<typeof DetailedItemsList> = (args) => <DetailedItemsList onContentClick={item => alert(item.contentLink)} {...args} />;
+const Template: ComponentStory<typeof DetailedItemsList> = (args) => <DetailedItemsList onContentClick={contentLink => alert(contentLink)} {...args} />;
 
 export const DetailedItemListStory = Template.bind({});
 DetailedItemListStory.args = {
