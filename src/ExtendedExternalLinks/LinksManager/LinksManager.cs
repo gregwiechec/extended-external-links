@@ -28,13 +28,13 @@ namespace ExtendedExternalLinks
         public IEnumerable<LinkDetailsData> GetItems(IPrincipal user)
         {
             var links = GetLinks(user).ToList();
-            return GetContent(GetDetailsList(links), 0, 10000);
+            return GetPage(GetDetailsList(links), 0, 10000);
         }
 
         public IEnumerable<LinkCommonData> GetAggregatedItems(IPrincipal user)
         {
             var links = GetLinks(user).ToList();
-            return GetContent(GetCommonList(links), 0, 10000);
+            return GetPage(GetCommonList(links), 0, 10000);
         }
 
         private IEnumerable<LinkCommonData> GetCommonList(IEnumerable<UrlContentReferencePair> source)
@@ -47,30 +47,19 @@ namespace ExtendedExternalLinks
             return items.OrderBy(item => item.Host);
         }
 
-        private IEnumerable<T> GetContent<T>(IEnumerable<T> source, int pageNumber, int pageSize)
+        private IEnumerable<T> GetPage<T>(IEnumerable<T> source, int pageNumber, int pageSize)
         {
             return source.Skip((pageNumber - 1) * pageSize).Take(pageSize);
-        }
-
-        private IContent GetContent(ContentReference reference)
-        {
-            if (_contentLoader.TryGet<IContent>(reference, out var content))
-            {
-                return content;
-            }
-
-            return new PageData {PageName = string.Empty, LinkURL = string.Empty};
         }
 
         private IEnumerable<LinkDetailsData> GetDetailsList(IEnumerable<UrlContentReferencePair> source)
         {
             var temp = source.Select(item => new
-                {Url = item.Url.ToString(), Content = GetContent(item.ContentReference)});
+                {Url = item.Url.ToString(), item.Content});
             var items = temp.Select(item => new LinkDetailsData
             {
                 ExternalLink = item.Url, ContentName = item.Content.Name,
                 ContentLink = item.Content.ContentLink,
-                ContentUrl = PageEditing.GetEditUrl(item.Content.ContentLink)
             });
             return items.OrderBy(item => item.ExternalLink);
         }
@@ -104,11 +93,11 @@ namespace ExtendedExternalLinks
                     continue;
                 }
 
-                if (IsAuthorized(user, content.ContentLink) && !content.IsDeleted)
+                if (IsAuthorized(user, content) && !content.IsDeleted)
                 {
                     links.Add(new UrlContentReferencePair
                     {
-                        ContentReference = content.ContentLink,
+                        Content = content,
                         Url = new Url(uri)
                     });
                 }
@@ -117,15 +106,14 @@ namespace ExtendedExternalLinks
             return links;
         }
 
-        private bool IsAuthorized(IPrincipal user, ContentReference pageReference)
+        private bool IsAuthorized(IPrincipal user, IContent content)
         {
-            var page = GetContent(pageReference);
-            return !(page is ISecurable sec) || sec.GetSecurityDescriptor().HasAccess(user, AccessLevel.Read);
+            return !(content is ISecurable sec) || sec.GetSecurityDescriptor().HasAccess(user, AccessLevel.Read);
         }
 
         public class UrlContentReferencePair
         {
-            public ContentReference ContentReference { get; set; }
+            public IContent Content { get; set; }
             public Url Url { get; set; }
         }
     }

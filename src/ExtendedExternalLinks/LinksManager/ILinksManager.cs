@@ -21,7 +21,6 @@ namespace ExtendedExternalLinks
     {
         public ContentReference ContentLink { get; set; }
         public string ContentName { get; set; }
-        public string ContentUrl { get; set; }
         public string ExternalLink { get; set; }
     }
 }

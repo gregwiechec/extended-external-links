@@ -57,7 +57,6 @@ namespace Alloy.Sample.Business.ExternalLinks
                     {
                         ContentLink = content.ContentLink,
                         ContentName = content.Name,
-                        ContentUrl = "",
                         ExternalLink = externalLink
                     };
                 }
