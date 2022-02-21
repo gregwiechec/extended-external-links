@@ -33,6 +33,8 @@ namespace ExtendedExternalLinks.Tests
         {
             public When_soft_links_repository_has_not_data()
             {
+                _contentSoftLinksRepository.Setup(x => x.Load(It.IsAny<string>(), false))
+                    .Returns(new List<SoftLink>());
                 linkDetailsDatas = _linksManager.GetItems(new GenericPrincipal(new GenericIdentity("admin"), Array.Empty<string>()));
             }
 
