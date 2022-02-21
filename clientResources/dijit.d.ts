@@ -1,13 +1,14 @@
 declare namespace dijit {
     /* Global Dijit Interface */
 
-    interface Dijit {
-    }
+    /*interface Dijit {
+    }*/
 
     /* dijit/_AttachMixin */
 
     /* tslint:disable:class-name */
 
+    // eslint-disable-next-line @typescript-eslint/class-name-casing
     interface _WidgetBase extends dojo.Stateful, Destroyable {
         dojoAttachEvent: string;
         dojoAttachPoint: string;
@@ -29,6 +30,7 @@ declare namespace dijit {
         own(...args: any[]): any[];
     }
 
+    // eslint-disable-next-line @typescript-eslint/class-name-casing
     interface _WidgetBaseConstructor<W> extends Pick<dojo._base.DeclareConstructor<W>, Exclude<keyof dojo._base.DeclareConstructor<W>, 'new'>> {
         new (params?: Partial<W> & ThisType<W>, srcNodeRef?: dojo.NodeOrString): W & dojo._base.DeclareCreatedObject;
     }

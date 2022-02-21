@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import { ServerSettingsContext, ServerSettings } from "./../../server-settings";
+import { ServerSettingsContext, ServerSettings } from "../../server-settings";
 import { dataService as defaultDataService } from "./../../data-service/data-service";
 import { ExternalLinksView } from "./external-links-view";
 import { changeContext } from "../../utils/change-context";

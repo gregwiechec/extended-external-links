@@ -8,7 +8,8 @@
     "scripts": {
         "build": "webpack --config webpack.config.js --mode production",
         "build:debug": "webpack --config webpack.config.js --mode development",
-        "storybook": "start-storybook -s ./ -p 6006"
+        "storybook": "start-storybook -s ./ -p 6006",
+        "lint": "eslint --ext js,ts,tsx ."
     },
     "eslintConfig": {
         "extends": [
@@ -41,6 +42,8 @@
 
         "babel-loader": "^8.0.5",
         "css-loader": "^2.1.0",
+        "eslint": "^5.15.1",
+        "eslint-plugin-react": "^7.12.4",
         "jest": "^26.0.24",
 
         "prettier": "2.3.2",
@@ -56,6 +59,8 @@
         "@types/node": "^16.3.0",
         "@types/react": "^17.0.14",
         "@types/react-dom": "^17.0.9",
+        "@typescript-eslint/eslint-plugin": "^1.5.0",
+        "@typescript-eslint/parser": "^1.5.0",
         "axios": "^0.21.1",
         "classnames": "^2.2.6",
         "node-sass": "4.14.1",

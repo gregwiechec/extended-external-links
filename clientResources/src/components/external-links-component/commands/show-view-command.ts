@@ -1,7 +1,7 @@
-import { React_Command } from "./React_Command";
+import { ReactCommand } from "./React_Command";
 import { Resources } from "../../../resources-context";
 
-class ShowViewCommand extends React_Command {
+export class ShowViewCommand extends ReactCommand {
     label: string = "Show view";
     category: string = "context";
     iconClass: string = "epi-iconReferences epi-icon--medium";
@@ -18,5 +18,3 @@ class ShowViewCommand extends React_Command {
         this._topic.publish("/epi/shell/context/request", { uri: "external-links:///1" }, { sender: null });
     }
 }
-
-export { ShowViewCommand };

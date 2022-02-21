@@ -25,6 +25,7 @@ const Component = (settings: ComponentProps) => {
     );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 export default {
     title: "External links view",
     component: Component

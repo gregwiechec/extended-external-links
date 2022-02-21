@@ -1,6 +1,5 @@
-//https://github.com/dojo/typings/blob/663fa35d1c46533c3b4294f93987d65caab65da7/dojo/1.11/_base.d.ts
-
 declare namespace dojo {
+    /* https://github.com/dojo/typings/blob/663fa35d1c46533c3b4294f93987d65caab65da7/dojo/1.11/_base.d.ts */
     namespace _base {
         /* dojo/_base/declare */
 

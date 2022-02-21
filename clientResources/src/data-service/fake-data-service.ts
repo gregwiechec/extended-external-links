@@ -1,15 +1,22 @@
 import { AggregatedDataItem, DataItem, DataService } from "../definitions";
 
-export const fakeDataService: DataService = {
-    loadItems: () => new Promise(resolve => {
-        resolve(getDetailedItems(50));
-    }),
-    loadAggregatedItems: () => new Promise(resolve => {
-        resolve(convertDetailedItems(50));
-    })
-};
-
 const externalURLs = ["https://www.google.com", "https://microsoft.com", "https://www.amazon.com"];
+
+export const getDetailedItems = (numberOfItems = 10): DataItem[] => {
+    const contentNames = ["Start", "Alloy Plan", "Alloy Track", "Alloy Meet", "Events", "Release Notes", "News"];
+
+    const result: DataItem[] = [];
+    for (let i = 0; i < numberOfItems; i++) {
+        result.push({
+            externalLink: externalURLs[i % externalURLs.length],
+            contentName: contentNames[i % contentNames.length],
+            contentLink: (i % contentNames.length).toString(),
+            language: "en",
+            publishDate: "2021-01-01"
+        });
+    }
+    return result;
+};
 
 const convertDetailedItems = (numberOfItems: number): AggregatedDataItem[] => {
     const items = getDetailedItems(numberOfItems);
@@ -32,22 +39,6 @@ const convertDetailedItems = (numberOfItems: number): AggregatedDataItem[] => {
     return result;
 };
 
-export const getDetailedItems = (numberOfItems = 10): DataItem[] => {
-    const contentNames = ["Start", "Alloy Plan", "Alloy Track", "Alloy Meet", "Events", "Release Notes", "News"];
-
-    const result: DataItem[] = [];
-    for (let i = 0; i < numberOfItems; i++) {
-        result.push({
-            externalLink: externalURLs[i % externalURLs.length],
-            contentName: contentNames[i % contentNames.length],
-            contentLink: (i % contentNames.length).toString(),
-            language: "en",
-            publishDate: "2021-01-01"
-        });
-    }
-    return result;
-};
-
 export const getAggregatedItems = (numberOfItems = 10): AggregatedDataItem[] => {
     const result: AggregatedDataItem[] = [];
     for (let i = 0; i < numberOfItems; i++) {
@@ -62,4 +53,13 @@ export const getAggregatedItems = (numberOfItems = 10): AggregatedDataItem[] => 
         result.push(aggregatedItem);
     }
     return result;
+};
+
+export const fakeDataService: DataService = {
+    loadItems: () => new Promise(resolve => {
+        resolve(getDetailedItems(50));
+    }),
+    loadAggregatedItems: () => new Promise(resolve => {
+        resolve(convertDetailedItems(50));
+    })
 };

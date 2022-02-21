@@ -2,9 +2,9 @@ import { createContext, useContext } from "react";
 import { DataService } from "./definitions";
 import { dataService as defaultDataService } from "./data-service/data-service";
 
-export type ServerSettings = {
+export interface ServerSettings {
     dataService: DataService;
-};
+}
 
 const defaultSettings: ServerSettings = {
     dataService: defaultDataService

@@ -1,9 +1,7 @@
-import { React_Stateful } from "./React_Stateful";
+import { ReactStateful } from "./React_Stateful";
 
-class React_Command extends React_Stateful{
+export class ReactCommand extends ReactStateful{
     canExecute: boolean = true;
     isActive: boolean = true;
     isAvailable: boolean = true;
 }
-
-export { React_Command };

@@ -32,14 +32,14 @@ declare namespace dojo {
 
         /**
          * Helper function for get() and set().
-         * Caches attribute name values so we don't do the string ops every time.
+         * Caches attribute name values, so we don't do the string ops every time.
          */
         _getAttrNames(name: string): string;
 
         /**
          * Automatic setting of params during construction
          */
-        postscript(params?: Object): void;
+        postscript(params?: Record<string, any>): void;
 
         /**
          * Get a property on a Stateful instance.
@@ -51,7 +51,7 @@ declare namespace dojo {
          */
         set(name: string, value: any): this;
         set(name: string, ...values: any[]): this;
-        set(name: Object): this;
+        set(name: Record<string, any>): this;
 
         /**
          * Internal helper for directly changing an attribute value.

@@ -5,6 +5,7 @@ import { AggregatedItemsList } from "./aggregated-items-list";
 import { getAggregatedItems } from "../../../data-service/fake-data-service";
 import "./../external-links-list.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 export default {
     title: "Components/Aggregated",
     component: AggregatedItemsList

@@ -1,7 +1,7 @@
-import { React_Command } from "./React_Command";
+import { ReactCommand } from "./React_Command";
 import { Resources } from "../../../resources-context";
 
-class RefreshCommand extends React_Command {
+export class RefreshCommand extends ReactCommand {
     label: string = "Refresh list";
     category: string = "context";
     iconClass: string = "epi-iconRevert epi-icon--medium";
@@ -17,5 +17,3 @@ class RefreshCommand extends React_Command {
         this._topic.publish("/external-links/reload");
     }
 }
-
-export { RefreshCommand };

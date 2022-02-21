@@ -4,6 +4,7 @@ import { DetailedItemsList } from "./detailed-items-list";
 import { getDetailedItems } from "../../../data-service/fake-data-service";
 import "./../external-links-list.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 export default {
     title: "Components/Details",
     component: DetailedItemsList

@@ -1,7 +1,7 @@
-import { React_Command } from "./React_Command";
+import { ReactCommand } from "./React_Command";
 import { Resources } from "../../../resources-context";
 
-class ExportCommand extends React_Command {
+class ExportCommand extends ReactCommand {
     label: string = "Export";
     category: string = "context";
     iconClass: string = "epi-iconDownload epi-icon--medium";

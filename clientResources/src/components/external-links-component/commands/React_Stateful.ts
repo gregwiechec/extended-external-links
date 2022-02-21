@@ -1,4 +1,4 @@
-class React_Stateful {
+export class ReactStateful {
     /**
      * Used across all instances a hash to cache attribute names and their getter
      * and setter names.
@@ -99,5 +99,3 @@ class React_Stateful {
         return handle;
     }
 }
-
-export { React_Stateful };
