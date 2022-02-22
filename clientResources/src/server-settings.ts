@@ -4,10 +4,12 @@ import { dataService as defaultDataService } from "./data-service/data-service";
 
 export interface ServerSettings {
     dataService: DataService;
+    externalLinksControllerUrl: string;
 }
 
 const defaultSettings: ServerSettings = {
-    dataService: defaultDataService
+    dataService: defaultDataService,
+    externalLinksControllerUrl: ""
 };
 
 const ServerSettingsContext = createContext<ServerSettings>(defaultSettings);

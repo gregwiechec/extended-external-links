@@ -65,4 +65,4 @@ export const useManageList = (showDetailsDefault = false) => {
         externalUrl,
         onExternalUrlChanged
     };
-};
+}; //TODO: LINKS add tests

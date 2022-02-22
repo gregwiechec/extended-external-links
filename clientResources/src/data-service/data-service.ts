@@ -4,7 +4,7 @@ import axios from "axios";
 export const dataService: DataService = {
     loadItems: () => new Promise((resolve) => {
         axios
-            .get("/EPiServer/extended-external-links/ExternalLinks/GetItems") //TODO: LINKS fix URL to the controller
+            .get("GetItems") //TODO: LINKS fix URL to the controller
             .then((result) => {
                 resolve(result.data);
             })
@@ -13,7 +13,7 @@ export const dataService: DataService = {
     loadAggregatedItems: () =>
         new Promise((resolve) => {
             axios
-                .get("/EPiServer/extended-external-links/ExternalLinks/GetAggregatedItems")
+                .get("GetAggregatedItems")
                 .then((result) => {
                     resolve(result.data);
                 })

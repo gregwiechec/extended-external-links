@@ -31,6 +31,12 @@ a.external-links-button {
     padding: 20px 0;
 }
 
+.external-links-component-container {
+    .external-links-no-data {
+        padding-left: 16px;
+    }
+}
+
 .external-links-component-container,
 .external-links-view-container {
     .external-links-table {

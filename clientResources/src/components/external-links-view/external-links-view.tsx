@@ -3,6 +3,7 @@ import { FilterableExternalLinksList } from "../external-links-list/external-lin
 import { CommandButton } from "../external-links-list/command-button/comand-button";
 import { useResourcesContext } from "../../resources-context";
 import { useManageList } from "../../hooks";
+import { useServerSettingsContext } from "../../server-settings";
 
 interface ExternalLinksViewProps {
     onContentClick: (contentLink: string) => void;
@@ -11,7 +12,16 @@ interface ExternalLinksViewProps {
 
 export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLinksViewProps) => {
     const resources = useResourcesContext();
-    const { showDetails, filteredDetailedItems, filteredAggregatedItems, onRefresh, setShowDetails, externalUrl, onExternalUrlChanged } = useManageList();
+    const settings = useServerSettingsContext();
+    const {
+        showDetails,
+        filteredDetailedItems,
+        filteredAggregatedItems,
+        onRefresh,
+        setShowDetails,
+        externalUrl,
+        onExternalUrlChanged
+    } = useManageList();
 
     return (
         <>
@@ -40,7 +50,7 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                     <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>
                         {resources.refresh}
                     </button>
-                    <a className="external-links-button" href="/EPiServer/extended-external-links/ExternalLinks/Export">
+                    <a className="external-links-button" href={settings.externalLinksControllerUrl + "/Export"}>
                         {resources.export}
                     </a>
                 </div>

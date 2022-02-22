@@ -43,7 +43,7 @@ export const AggregatedItemsList = ({ items, onContentClick }: ItemsListProps) =
                             <ul>
                                 {(x.contents || []).map((content) => (
                                     <li key={content.contentLink}>
-                                        <ActionLink onClick={() => onContentClick(content.contentLink)} newWindow>
+                                        <ActionLink onClick={() => onContentClick(content.contentLink)}>
                                             {content.contentName}
                                         </ActionLink>
                                     </li>

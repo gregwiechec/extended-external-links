@@ -25,20 +25,18 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
     minHeight: 400,
 
     postCreate: function () {
-        const configuration = {
-            baseUrl: ""
-        }; //JSON.parse(rootElement?.dataset?.configuration || "{}");
-        //axios.defaults.baseURL = configuration.baseUrl;
+        axios.defaults.baseURL = this.params.externalLinksControllerUrl;
 
         const settings: ServerSettings = {
-            dataService: defaultDataService
+            dataService: defaultDataService,
+            externalLinksControllerUrl: this.params.externalLinksControllerUrl
         };
 
         const self = this;
 
         this.add("commands", new ShowViewCommand(topic, resources));
         this.add("commands", new RefreshCommand(topic, resources));
-        this.add("commands", new ExportCommand(resources));
+        this.add("commands", new ExportCommand(resources, settings));
 
         ReactDOM.render(
             <React.StrictMode>
@@ -55,5 +53,3 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
         ReactDOM.unmountComponentAtNode(this.domNode);
     }
 });
-//TODO: component should support only detailed
-//TODO: add lint

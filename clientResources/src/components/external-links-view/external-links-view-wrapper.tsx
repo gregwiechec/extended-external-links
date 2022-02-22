@@ -6,12 +6,13 @@ import { dataService as defaultDataService } from "./../../data-service/data-ser
 import { ExternalLinksView } from "./external-links-view";
 import { changeContext } from "../../utils/change-context";
 import { ResourcesContext } from "../../resources-context";
+import { ReactStateful } from "../external-links-component/commands/React_Stateful";
 // external imports
 import declare from "dojo/_base/declare";
 import _LayoutWidget from "dijit/layout/_LayoutWidget";
 import CancelChanges from "epi-cms/content-approval/command/CancelChanges";
 import resources from "epi/i18n!epi/cms/nls/externallinks";
-import { ReactStateful } from "../external-links-component/commands/React_Stateful";
+import AppSettings from "epi-cms/ApplicationSettings";
 
 class CancelChangesModel extends ReactStateful {
     isDirty: boolean = false
@@ -24,11 +25,11 @@ export default declare([_LayoutWidget], {
     class: "external-links-view-container",
 
     postCreate: function () {
-        debugger;
-        axios.defaults.baseURL = this.params.externalLinksControllerUrl;
+        axios.defaults.baseURL = AppSettings.externalLinksControllerUrl;
 
         const settings: ServerSettings = {
-            dataService: defaultDataService
+            dataService: defaultDataService,
+            externalLinksControllerUrl: AppSettings.externalLinksControllerUrl
         };
 
         const model = new CancelChangesModel();
