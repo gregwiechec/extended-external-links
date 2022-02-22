@@ -4,7 +4,7 @@ import axios from "axios";
 export const dataService: DataService = {
     loadItems: () => new Promise((resolve) => {
         axios
-            .get("GetItems") //TODO: LINKS fix URL to the controller
+            .get("GetItems")
             .then((result) => {
                 resolve(result.data);
             })

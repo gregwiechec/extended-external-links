@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-//TODO: LINKS allow to sort table
+//TODO: LINKS future allow to sort table
 
 export const useSortState = <T>(items: T[]) => {
     const [currentOrder, setSortOrder] = useState("");
