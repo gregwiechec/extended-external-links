@@ -6,10 +6,10 @@ using EPiServer.Shell.Services.Rest;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace ExtendedExternalLinks
 {
-    [Authorize(Roles = "CmsEditors,CmsAdmin,WebAdmins,Administrators")]
-    [Route("[controller]")]
+    [Authorize(Roles = "CmsEditors,CmsAdmins,WebAdmins,Administrators")]
     public class ExternalLinksController : Controller
     {
         private readonly ILinksManager _linksManager;
@@ -21,7 +21,6 @@ namespace ExtendedExternalLinks
             _principalAccessor = principalAccessor;
         }
 
-        [Route("[action]")]
         [HttpGet]
         public ActionResult GetItems()
         {
@@ -29,7 +28,6 @@ namespace ExtendedExternalLinks
             return new RestResult { Data = list };
         }
 
-        [Route("[action]")]
         [HttpGet]
         public ActionResult GetAggregatedItems()
         {
@@ -37,7 +35,6 @@ namespace ExtendedExternalLinks
             return new RestResult { Data = list };
         }
 
-        [Route("[action]")]
         [HttpGet]
         public IActionResult Export()
         {

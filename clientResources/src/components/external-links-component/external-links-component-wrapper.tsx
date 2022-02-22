@@ -28,7 +28,7 @@ export default declare([WidgetBase, _WidgetCommandProviderMixin, Destroyable], {
         const configuration = {
             baseUrl: ""
         }; //JSON.parse(rootElement?.dataset?.configuration || "{}");
-        axios.defaults.baseURL = configuration.baseUrl;
+        //axios.defaults.baseURL = configuration.baseUrl;
 
         const settings: ServerSettings = {
             dataService: defaultDataService

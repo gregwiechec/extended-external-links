@@ -24,10 +24,8 @@ export default declare([_LayoutWidget], {
     class: "external-links-view-container",
 
     postCreate: function () {
-        const configuration = {
-            baseUrl: ""
-        }; //JSON.parse(rootElement?.dataset?.configuration || "{}");
-        axios.defaults.baseURL = configuration.baseUrl;
+        debugger;
+        axios.defaults.baseURL = this.params.externalLinksControllerUrl;
 
         const settings: ServerSettings = {
             dataService: defaultDataService

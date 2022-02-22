@@ -40,7 +40,7 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
                     <button className="dijitButton refresh-button" style={{ marginRight: "8px" }} onClick={onRefresh}>
                         {resources.refresh}
                     </button>
-                    <a className="external-links-button" href="/ExternalLinks/export">
+                    <a className="external-links-button" href="/EPiServer/extended-external-links/ExternalLinks/Export">
                         {resources.export}
                     </a>
                 </div>

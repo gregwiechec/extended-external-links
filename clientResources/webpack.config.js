@@ -74,6 +74,7 @@ const config = {
         "epi/dependency",
         "epi-cms/content-approval/command/CancelChanges",
         "epi/shell/command/_WidgetCommandProviderMixin",
+        "epi-cms/ApplicationSettings",
         "epi/i18n!epi/cms/nls/externallinks"
     ]
 };
