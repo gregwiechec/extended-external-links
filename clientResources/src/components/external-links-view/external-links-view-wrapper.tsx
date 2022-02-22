@@ -8,15 +8,14 @@ import { changeContext } from "../../utils/change-context";
 import { ResourcesContext } from "../../resources-context";
 // external imports
 import declare from "dojo/_base/declare";
-import Stateful from "dojo/Stateful";
 import _LayoutWidget from "dijit/layout/_LayoutWidget";
 import CancelChanges from "epi-cms/content-approval/command/CancelChanges";
 import resources from "epi/i18n!epi/cms/nls/externallinks";
+import { ReactStateful } from "../external-links-component/commands/React_Stateful";
 
-//TODO: LINKS try to remove declare
-const Model = declare([Stateful], {
-    isDirty: false
-});
+class CancelChangesModel extends ReactStateful {
+    isDirty: boolean = false
+}
 
 /**
  * External links view is used to display custom view in Edit Mode
@@ -34,9 +33,9 @@ export default declare([_LayoutWidget], {
             dataService: defaultDataService
         };
 
-        const model = new Model();
-        //TODO: LINKS own command
+        const model = new CancelChangesModel();
         const command = new CancelChanges({ model: model, order: 20 });
+        this.own(command);
 
         const self = this;
         ReactDOM.render(

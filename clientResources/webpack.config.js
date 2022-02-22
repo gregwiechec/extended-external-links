@@ -67,7 +67,6 @@ const config = {
     plugins: [],
     externals: [
         "dojo/_base/declare",
-        "dojo/Stateful",
         "dojo/topic",
         "dijit/_WidgetBase",
         "dijit/Destroyable",

@@ -92,8 +92,3 @@ declare module "dojo/topic" {
     const hub: dojo.Topic;
     export = hub;
 }
-
-declare module "dojo/Stateful" {
-    const stateful: dojo.Stateful;
-    export = stateful;
-}
