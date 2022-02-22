@@ -48,6 +48,6 @@ declare module "dijit/Destroyable" {
 }
 
 declare module "dijit/layout/_LayoutWidget" {
-    const _LayoutWidget: any; //TODO: LINKS copy definition
+    const _LayoutWidget: any;
     export = _LayoutWidget;
 }
