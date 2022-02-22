@@ -38,7 +38,7 @@ a.external-links-button {
         width: 100%;
         max-width: 500px;
         border-spacing: 0;
-        height: 100%;
+        height: calc(100% - 60px);
         padding-left: 8px;
 
         thead,
@@ -52,7 +52,7 @@ a.external-links-button {
         tbody {
             overflow-y: auto;
             overflow-x: hidden;
-            max-height: calc(100% - 80px);
+            max-height: calc(100% - 10px);
         }
 
         tr {
