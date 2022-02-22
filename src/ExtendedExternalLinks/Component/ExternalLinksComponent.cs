@@ -10,6 +10,7 @@ namespace ExtendedExternalLinks.Component
             Categories = new[] { "cms" };
             LanguagePath = "/externallinks/component";
             SortOrder = 500;
+            Settings["externalLinksControllerUrl"] = Paths.ToResource("extended-external-links", "ExternalLinks");
             //PlugInAreas = new[] { PlugInArea.NavigationDefaultGroup };
         }
     }
