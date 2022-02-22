@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-import { AggregatedDataItem, DataItem } from "../definitions";
-import { useServerSettingsContext } from "../server-settings";
+import { AggregatedDataItem, DataItem, DataService } from "../definitions";
 
-export const useManageList = (showDetailsDefault = false) => {
-    const serverSettings = useServerSettingsContext();
-
+export const useManageList = (dataService: DataService, showDetailsDefault = false) => {
     const [showDetails, setShowDetails] = useState(showDetailsDefault);
     const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
     const [filteredDetailedItems, setFilteredDetailedItems] = useState<DataItem[]>([]);
@@ -17,16 +14,14 @@ export const useManageList = (showDetailsDefault = false) => {
             e.preventDefault();
         }
 
-        showDetails ? serverSettings.dataService.loadItems : serverSettings.dataService.loadAggregatedItems;
-
         if (showDetails) {
-            serverSettings.dataService.loadItems().then((result) => {
+            dataService.loadItems().then((result) => {
                 setDetailedItems(result);
                 setFilteredDetailedItems(result);
                 setFilteredAggregatedItems(aggregatedItems);
             });
         } else {
-            serverSettings.dataService.loadAggregatedItems().then((result) => {
+            dataService.loadAggregatedItems().then((result) => {
                 setAggregatedItems(result);
                 setFilteredDetailedItems(detailedItems);
                 setFilteredAggregatedItems(result);
@@ -52,9 +47,9 @@ export const useManageList = (showDetailsDefault = false) => {
         onRefresh(null);
     }, [showDetails]);
 
-    useEffect(() => {
+    /*    useEffect(() => {
         onRefresh(null);
-    }, []);
+    }, []);*/
 
     return {
         showDetails,

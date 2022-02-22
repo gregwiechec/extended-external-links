@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { CommandButton } from "../external-links-list/command-button/comand-button";
 import { useResourcesContext } from "../../resources-context";
@@ -21,7 +21,11 @@ export const ExternalLinksView = ({ onContentClick, closeCommand }: ExternalLink
         setShowDetails,
         externalUrl,
         onExternalUrlChanged
-    } = useManageList();
+    } = useManageList(settings.dataService);
+
+    useEffect(() => {
+        onRefresh(null);
+    }, []);
 
     return (
         <>

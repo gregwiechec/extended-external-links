@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FilterableExternalLinksList } from "../external-links-list/external-links-list";
 import { useManageList } from "../../hooks";
+import { useServerSettingsContext } from "../../server-settings";
 
 interface ExternalLinksListComponentProps {
     onContentClick: (contentLink: string) => void;
@@ -8,6 +9,7 @@ interface ExternalLinksListComponentProps {
 }
 
 export const ExternalLinksListComponent = ({ onContentClick, topic }: ExternalLinksListComponentProps) => {
+    const serverSettings = useServerSettingsContext();
     const {
         showDetails,
         filteredDetailedItems,
@@ -16,9 +18,11 @@ export const ExternalLinksListComponent = ({ onContentClick, topic }: ExternalLi
         setShowDetails,
         externalUrl,
         onExternalUrlChanged
-    } = useManageList(true);
+    } = useManageList(serverSettings.dataService, true);
 
     useEffect(() => {
+        onRefresh();
+
         let handle = topic.subscribe("/external-links/reload", () => {
             onRefresh(null);
         });
