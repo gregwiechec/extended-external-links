@@ -15,6 +15,6 @@ export class ShowViewCommand extends ReactCommand {
     }
 
     execute() {
-        this._topic.publish("/epi/shell/context/request", { uri: "external-links:///1" }, { sender: null });
+        this._topic.publish("/epi/shell/context/request", { uri: "external-links:///" }, { sender: null });
     }
 }

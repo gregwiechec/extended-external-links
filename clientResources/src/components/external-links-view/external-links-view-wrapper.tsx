@@ -53,5 +53,4 @@ export default declare([_LayoutWidget], {
         ReactDOM.unmountComponentAtNode(this.domNode);
     }
 });
-//TODO: LINKS server view is rendered with id
 //TODO: LINKS future allow to filter by Content with searchable text
