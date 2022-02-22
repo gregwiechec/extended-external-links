@@ -75,7 +75,20 @@ namespace Alloy.Sample.Business.ExternalLinks
                     yield return new LinkCommonData
                     {
                         ExternalLink = i == 0 ? externalLink : externalLink + i,
-                        Count = random.Next(100)
+                        Count = random.Next(100),
+                        Contents = new []
+                        {
+                            new ContentValue
+                            {
+                                ContentLink = ContentReference.StartPage,
+                                ContentName = "Start Page"
+                            },
+                            new ContentValue
+                            {
+                                ContentLink = new ContentReference(20),
+                                ContentName = "Another page"
+                            }
+                        }
                     };
                 }
             }
