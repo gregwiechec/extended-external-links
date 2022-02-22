@@ -54,4 +54,4 @@ export default declare([_LayoutWidget], {
     }
 });
 //TODO: LINKS server view is rendered with id
-//TODO: LINKS allow to filter by Content with searchable text
+//TODO: LINKS future allow to filter by Content with searchable text

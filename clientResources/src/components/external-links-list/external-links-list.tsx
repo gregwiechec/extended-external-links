@@ -72,4 +72,3 @@ export const FilterableExternalLinksList = ({
 };
 
 //TODO: LINKS fix issue when reloading the page
-//TODO: LINKS hide button when reloading the page
