@@ -30,7 +30,7 @@ export const ExternalLinksListComponent = ({ onContentClick, topic }: ExternalLi
             handle.remove();
             handle = null;
         };
-    });
+    }, []);
 
     return (
         <>
