@@ -3,7 +3,7 @@ const config = {
     entry: {
         "external-links-view": "./src/components/external-links-view/external-links-view-wrapper.tsx",
         "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx",
-        "initializer": "./src/module-initializer.ts"
+        initializer: "./src/module-initializer.ts"
     },
     output: {
         filename: "[name].js",
@@ -52,12 +52,14 @@ const config = {
             {
                 test: /\.(sc|c)ss$/,
                 use: [
-                    "style-loader",
+
                     "css-loader",
                     {
                         loader: "sass-loader",
                         options: {
-                            includePaths: ["node_modules"]
+                            sassOptions: {
+                                includePaths: ["node_modules"]
+                            }
                         }
                     }
                 ]
