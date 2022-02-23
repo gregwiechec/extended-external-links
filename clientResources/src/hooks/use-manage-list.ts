@@ -1,7 +1,17 @@
 import { useEffect, useState } from "react";
 import { AggregatedDataItem, DataItem, DataService } from "../definitions";
 
-export const useManageList = (dataService: DataService, showDetailsDefault = false) => {
+export interface UseManageListResult {
+    showDetails: boolean;
+    filteredDetailedItems: DataItem[];
+    filteredAggregatedItems: AggregatedDataItem[];
+    onRefresh: (e?: any) => void;
+    setShowDetails: (value: boolean) => void;
+    externalUrl: string;
+    onExternalUrlChanged: (value: string) => void;
+}
+
+export const useManageList = (dataService: DataService, showDetailsDefault = false): UseManageListResult => {
     const [showDetails, setShowDetails] = useState(showDetailsDefault);
     const [detailedItems, setDetailedItems] = useState<DataItem[]>([]);
     const [filteredDetailedItems, setFilteredDetailedItems] = useState<DataItem[]>([]);
@@ -47,10 +57,6 @@ export const useManageList = (dataService: DataService, showDetailsDefault = fal
         onRefresh(null);
     }, [showDetails]);
 
-    /*    useEffect(() => {
-        onRefresh(null);
-    }, []);*/
-
     return {
         showDetails,
         filteredDetailedItems,
@@ -60,4 +66,4 @@ export const useManageList = (dataService: DataService, showDetailsDefault = fal
         externalUrl,
         onExternalUrlChanged
     };
-}; //TODO: LINKS add tests
+};
