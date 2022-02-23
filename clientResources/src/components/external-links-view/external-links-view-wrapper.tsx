@@ -13,6 +13,7 @@ import _LayoutWidget from "dijit/layout/_LayoutWidget";
 import CancelChanges from "epi-cms/content-approval/command/CancelChanges";
 import resources from "epi/i18n!epi/cms/nls/externallinks";
 import AppSettings from "epi-cms/ApplicationSettings";
+import "xstyle/css!./external-links-view.css";
 
 class CancelChangesModel extends ReactStateful {
     isDirty: boolean = false

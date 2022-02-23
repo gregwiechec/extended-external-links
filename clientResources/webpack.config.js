@@ -11,7 +11,10 @@ const amdModules = [
     "epi-cms/content-approval/command/CancelChanges",
     "epi/shell/command/_WidgetCommandProviderMixin",
     "epi-cms/ApplicationSettings",
-    "epi/i18n!epi/cms/nls/externallinks"
+    "epi/i18n!epi/cms/nls/externallinks",
+    "xstyle/css!./external-links-component.css",
+    "xstyle/css!./external-links-view.css",
+    "xstyle/css!./base.css"
 ];
 
 const config = {
