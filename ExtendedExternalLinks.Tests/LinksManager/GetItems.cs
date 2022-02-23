@@ -109,7 +109,7 @@ namespace ExtendedExternalLinks.Tests
                     }
 
                     [Fact]
-                    void It_should_return_item_with_URL() => Assert.Equal(linkDetailsDatas.Single().ExternalLink, "https://google.com/");
+                    void It_should_return_item_with_URL() => Assert.Equal("https://google.com/", linkDetailsDatas.Single().ExternalLink);
 
                     [Fact]
                     void It_should_return_item_with_ContentLink() => Assert.Equal(linkDetailsDatas.Single().ContentLink, new ContentReference(1234));
