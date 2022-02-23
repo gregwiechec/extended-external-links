@@ -1,4 +1,19 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const amdModules = [
+    "dojo/_base/declare",
+    "dojo/topic",
+    "dijit/_WidgetBase",
+    "dijit/Destroyable",
+    "dijit/layout/_LayoutWidget",
+    "epi/dependency",
+    "epi-cms/content-approval/command/CancelChanges",
+    "epi/shell/command/_WidgetCommandProviderMixin",
+    "epi-cms/ApplicationSettings",
+    "epi/i18n!epi/cms/nls/externallinks"
+];
+
 const config = {
     entry: {
         "external-links-view": "./src/components/external-links-view/external-links-view-wrapper.tsx",
@@ -11,15 +26,16 @@ const config = {
         libraryExport: "default",
         path: path.resolve(__dirname, "../src/ExtendedExternalLinks/ClientResources")
     },
-    /*optimization: {  //TODO: LINKS why it's not working
+    /*optimization: {
+        //TODO: LINKS why it's not working
         splitChunks: {
-            chunks: 'all',
+            chunks: "all",
             name() {
-                return 'base';
+                return "base";
             }
         },
         concatenateModules: false,
-        chunkIds: 'named'
+        chunkIds: "named"
     },*/
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
@@ -52,13 +68,16 @@ const config = {
             {
                 test: /\.(sc|c)ss$/,
                 use: [
-
+                    MiniCssExtractPlugin.loader,
+                    //"style-loader",
                     "css-loader",
                     {
                         loader: "sass-loader",
                         options: {
                             sassOptions: {
-                                includePaths: ["node_modules"]
+                                includePaths: ["node_modules"],
+                                // Prefer `dart-sass`
+                                implementation: require("sass")
                             }
                         }
                     }
@@ -66,18 +85,20 @@ const config = {
             }
         ]
     },
-    plugins: [],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+            chunkFilename: "base.css"
+        })
+    ],
     externals: [
-        "dojo/_base/declare",
-        "dojo/topic",
-        "dijit/_WidgetBase",
-        "dijit/Destroyable",
-        "dijit/layout/_LayoutWidget",
-        "epi/dependency",
-        "epi-cms/content-approval/command/CancelChanges",
-        "epi/shell/command/_WidgetCommandProviderMixin",
-        "epi-cms/ApplicationSettings",
-        "epi/i18n!epi/cms/nls/externallinks"
+        function (context, request, callback) {
+            if (request && amdModules.some((x) => request.startsWith(x))) {
+                return callback(null, request);
+            }
+
+            callback();
+        }
     ]
 };
 
