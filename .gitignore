@@ -28,7 +28,4 @@ License.config
 
 out/
 
-/src/ExtendedExternalLinks/ClientResources/external-links-widget.js
-/src/ExtendedExternalLinks/ClientResources/external-links-component.js
-/src/ExtendedExternalLinks/ClientResources/external-links-view.js
-/src/ExtendedExternalLinks/ClientResources/initializer.js
+/src/ExtendedExternalLinks/ClientResources/**
