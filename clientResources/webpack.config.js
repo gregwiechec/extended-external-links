@@ -19,7 +19,7 @@ const config = {
     entry: {
         "external-links-view": "./src/components/external-links-view/external-links-view-wrapper.tsx",
         "external-links-component": "./src/components/external-links-component/external-links-component-wrapper.tsx",
-        initializer: "./src/module-initializer.ts"
+        "external-links-initializer": "./src/module-initializer.ts"
     },
     output: {
         filename: "[name].js",
