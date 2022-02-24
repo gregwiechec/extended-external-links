@@ -2,7 +2,6 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { DetailedItemsList } from "./detailed-items-list";
 import { getDetailedItems } from "../../../data-service/fake-data-service";
-import "./../external-links-list.scss";
 
 // eslint-disable-next-line @typescript-eslint/no-object-literal-type-assertion
 export default {

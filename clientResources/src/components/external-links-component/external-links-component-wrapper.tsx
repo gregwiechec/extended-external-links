@@ -14,7 +14,6 @@ import WidgetBase from "dijit/_WidgetBase";
 import Destroyable from "dijit/Destroyable";
 import _WidgetCommandProviderMixin from "epi/shell/command/_WidgetCommandProviderMixin";
 import resources from "epi/i18n!epi/cms/nls/externallinks";
-import "xstyle/css!./external-links-component.css";
 
 /**
  * Component is used to display component in Edit Mode

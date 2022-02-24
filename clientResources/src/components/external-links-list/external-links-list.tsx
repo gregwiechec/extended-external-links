@@ -3,7 +3,6 @@ import { AggregatedDataItem, DataItem } from "../../definitions";
 import { AggregatedItemsList } from "./aggregated-items-list/aggregated-items-list";
 import { DetailedItemsList } from "./detailed-items-list/detailed-items-list";
 import { useResourcesContext } from "../../resources-context";
-import "./external-links-list.scss";
 
 interface FilterableExternalLinksListProps {
     showDetails: boolean;

@@ -1,6 +1,8 @@
 import dependency from "epi/dependency";
 import AppSettings from "epi-cms/ApplicationSettings";
-import "xstyle/css!./base.css";
+import "./components/external-links-list/external-links-list.scss";
+// external dependencies
+import "xstyle/css!extended-external-links/external-links-list.css";
 
 interface ModuleSettings {
     externalLinksControllerUrl: string;

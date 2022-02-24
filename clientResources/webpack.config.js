@@ -12,9 +12,7 @@ const amdModules = [
     "epi/shell/command/_WidgetCommandProviderMixin",
     "epi-cms/ApplicationSettings",
     "epi/i18n!epi/cms/nls/externallinks",
-    "xstyle/css!./external-links-component.css",
-    "xstyle/css!./external-links-view.css",
-    "xstyle/css!./base.css"
+    "xstyle/css!extended-external-links/external-links-list.css"
 ];
 
 const config = {
@@ -29,17 +27,17 @@ const config = {
         libraryExport: "default",
         path: path.resolve(__dirname, "../src/ExtendedExternalLinks/ClientResources")
     },
-    /*optimization: {
+    optimization: {
         //TODO: LINKS why it's not working
         splitChunks: {
             chunks: "all",
             name() {
-                return "base";
+                return "external-link-list-base";
             }
         },
         concatenateModules: false,
         chunkIds: "named"
-    },*/
+    },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
@@ -90,8 +88,7 @@ const config = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "base.css"
+            filename: "external-links-list.css"
         })
     ],
     externals: [
