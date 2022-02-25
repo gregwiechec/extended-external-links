@@ -1,4 +1,5 @@
 ExtendedExternalLinks
 
+.NET Core version of External Links plugin.
 
-Full documentation can be found here: https://github.com/gregwiechec
+Plugin includes Edit Mode gadget and Edit Mode custom view that allows to show external links used on site.
