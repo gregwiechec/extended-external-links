@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtendedExternalLinks", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A1272902-1CD0-4507-9714-CB3AE96E78FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedExternalLinks.Tests", "ExtendedExternalLinks.Tests\ExtendedExternalLinks.Tests.csproj", "{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtendedExternalLinks.Tests", "src\ExtendedExternalLinks.Tests\ExtendedExternalLinks.Tests.csproj", "{9F54D994-C5AD-4AD8-B6D6-44A5AA0B91D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
