@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\ExtendedExternalLinks\ExtendedExternalLinks.csproj" />
+    <ProjectReference Include="..\ExtendedExternalLinks\ExtendedExternalLinks.csproj" />
   </ItemGroup>
 
 </Project>
