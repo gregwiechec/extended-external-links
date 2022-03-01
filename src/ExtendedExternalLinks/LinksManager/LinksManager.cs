@@ -105,7 +105,7 @@ namespace ExtendedExternalLinks
                     {
                         Content = content,
                         Url = new Url(uri),
-                        Language = softLink.ReferencedLanguage.Name
+                        Language = softLink?.OwnerLanguage.Name ?? ""
                     });
                 }
             }
