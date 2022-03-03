@@ -24,17 +24,17 @@ namespace ExtendedExternalLinks.Tests
             {
                 var softLinks = new List<SoftLink>()
                 {
-                    new()
+                    new SoftLink
                     {
                         Url = "https://google.com",
                         OwnerContentLink = new ContentReference(1234),
-                        ReferencedLanguage = new CultureInfo("en")
+                        OwnerLanguage = new CultureInfo("en")
                     },
-                    new()
+                    new SoftLink
                     {
                         Url = "https://google.com",
                         OwnerContentLink = new ContentReference(12345),
-                        ReferencedLanguage = new CultureInfo("en")
+                        OwnerLanguage = new CultureInfo("en")
                     }
                 };
                 _contentSoftLinksRepositoryMock.Setup(x => x.Load(It.IsAny<string>(), false))
